@@ -1,30 +1,34 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { register } from '../../features/auth/authSlice';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
+    username:"",
     email: "",
     password: "",
-    password2: "",
+    dateOfBirth: "",
+    image:""
   });
-  const { name, email, password, password2 } = formData;
-  const { isSuccess, message, isError } = useSelector((state) => state.auth);
+  const { name, email, password, dateOfBirth } = formData;
+//   const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (isSuccess) {
-      notification.success({
-        message: "Success",
-        description: message,
-      });
-    }
-    if (isError) {
-      notification.error({
-        message: "Error!!!",
-        description: message,
-      });
-    }
-    dispatch(reset())
-  }, [isSuccess, message, isError]);
+//   useEffect(() => {
+//     if (isSuccess) {
+//       notification.success({
+//         message: "Success",
+//         description: message,
+//       });
+//     }
+//     if (isError) {
+//       notification.error({
+//         message: "Error!!!",
+//         description: message,
+//       });
+//     }
+//     dispatch(reset())
+//   }, [isSuccess, message, isError]);
 
   const dispatch = useDispatch();
 
@@ -36,14 +40,7 @@ const Register = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    if (password !== password2) {
-      return notification.error({
-        message: "Error",
-        description: "Passwords do not match",
-      });
-    } else {
-      return dispatch(register(formData));
-    }
+    dispatch(register(formData));
   };
   return (
     <form onSubmit={onSubmit}>
@@ -53,6 +50,13 @@ const Register = () => {
         value={name}
         onChange={onChange}
         placeholder="Insert your name"
+      />
+      <input
+        type="text"
+        name="username"
+        value={username}
+        onChange={onChange}
+        placeholder="Insert your username"
       />
       <input
         type="email"
@@ -69,13 +73,14 @@ const Register = () => {
         placeholder="Insert your password"
       />
       <input
-        type="password"
-        name="password2"
-        value={password2}
+        type="date"
+        name="dateOfBirth"
+        value={dateOfBirth}
         onChange={onChange}
-        placeholder="Insert your password"
+        placeholder="Insert your birthday"
       />
-      <button type="submit">Register</button>
+
+    <button type="submit">Register</button>
     </form>
   );
 };
