@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user")) || null;
-const token = JSON.parse(localStorage.getItem("token")) || nul;
+const token = JSON.parse(localStorage.getItem("token")) || null;
 
 const initialState = {
   user: user,
@@ -14,11 +14,12 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(register.fulfilled, (state, action) => {
+    builder
+    .addCase(register.fulfilled, (state, action) => {
       state.isSuccess = true; // esto no va
       state.message = action.payload.msg; // esto no va
-    });
-    addCase(login.fulfilled, (state, action) => {
+    })
+    .addCase(login.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
     });
