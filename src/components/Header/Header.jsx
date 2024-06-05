@@ -29,6 +29,9 @@ const Header = () => {
             <Link to="/profile" className="hover:text-blue-500">
               Profile
             </Link>
+            <Link to="/createPost" className="hover:text-blue-500">
+              Create Post
+            </Link>
             <button type="primary" onClick={onLogout}>
               Logout
             </button>
