@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+.NavbarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.0975);
+}
+
+.Imagen_Nav {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.NavbarContainer h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: "Inter", sans-serif;
+  color: #262626;
+  margin-right: 16px;
+}
+
+.Navbar {
+  display: flex;
+  align-items: center;
+}
+
+.Ul_Nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.Ul_Nav .NavLink {
+  margin-right: 16px;
+}
+
+.Ul_Nav .NavLink a {
+  color: #262626;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.Ul_Nav .NavLink a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.Ul_Nav .NavLink a:hover {
+  color: #3897f0;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .NavbarContainer {
+    justify-content: flex-start;
+    padding: 12px 0;
+  }
+
+  .NavbarContainer h3 {
+    font-size: 1.4rem;
+    margin-right: 0;
+  }
+}
