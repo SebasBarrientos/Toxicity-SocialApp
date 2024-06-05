@@ -7,6 +7,7 @@ const token = localStorage.getItem("token") || "";
 const initialState = {
   user: user,
   token: token,
+  isLoading: false,
 };
 
 export const authSlice = createSlice({
@@ -41,6 +42,8 @@ export const login = createAsyncThunk("auth/login", async (user) => {
     console.error(error);
   }
 });
+
+
 export const logout = createAsyncThunk("auth/logout", async () => {
   try {
     return await authService.logout();

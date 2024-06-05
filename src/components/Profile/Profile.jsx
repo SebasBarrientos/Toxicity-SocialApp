@@ -7,7 +7,11 @@ const formatDate = (dateString) => {
 };
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user, isLoading } = useSelector((state) => state.auth);
+
+  if (isLoading) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <div>
@@ -19,7 +23,13 @@ const Profile = () => {
       <div>
         <h2>Posts</h2>
         <div>
-         {console.log(user.posts)}
+          {user.posts ? (
+            user.posts.map((post, index) => (
+              <div key={index}>{post.content}</div>
+            ))
+          ) : (
+            <p>No hay posts disponibles.</p>
+          )}
         </div>
       </div>
     </div>
