@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { register } from '../../features/auth/authSlice';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
-    username:"",
+    userName:"",
     email: "",
     password: "",
     dateOfBirth: "",
     image:""
   });
-  const { name, email, password, dateOfBirth } = formData;
+  const { name,userName, email, password, dateOfBirth } = formData;
 //   const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
 //   useEffect(() => {
@@ -40,7 +40,9 @@ const Register = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     dispatch(register(formData));
+    
   };
   return (
     <form onSubmit={onSubmit}>
@@ -54,7 +56,7 @@ const Register = () => {
       <input
         type="text"
         name="username"
-        value={username}
+        value={userName}
         onChange={onChange}
         placeholder="Insert your username"
       />
