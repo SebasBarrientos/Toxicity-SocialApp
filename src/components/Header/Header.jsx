@@ -1,11 +1,18 @@
 import React, { useReducer, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../features/auth/authSlice";
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const onLogout = (e) => {
+    e.preventDefault()
+    dispatch(logout());
+    navigate("/login");
+  };
   return (
     <nav>
       <h3>Toxicity</h3>
@@ -22,13 +29,7 @@ const Header = () => {
             <Link to="/profile" className="hover:text-blue-500">
               Profile
             </Link>
-            <button
-              type="primary"
-              onClick={() => {
-                logout();
-                navigate("/login");
-              }}
-            >
+            <button type="primary" onClick={onLogout}>
               Logout
             </button>
           </>
