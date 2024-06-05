@@ -17,15 +17,13 @@ export const getPosts = createAsyncThunk("posts/getPosts", async (page) => {
     console.error(error);
   }
 });
-
-export const getPostById = createAsyncThunk("posts/getPostById", async (id) => {
+export const getPostById = createAsyncThunk("posts/getPostById", async (_id) => {
   try {
-    return await postsService.getPostById(id)
+    return await postsService.getPostById(_id)
   } catch (error) {
     console.error(error);
   }
 })
-
 export const getPostByTitle = createAsyncThunk("posts/getPostByTitle", async (title) => {
   try {
     return await postsService.getPostByTitle(title)

@@ -7,8 +7,13 @@ const getPosts = async (page) => {
     return res.data 
 }
 
-const getPostById = async (id) => {
-    const res = await axios.get(API_URL + "/id/" + id)
+const getPostById = async (_id) => {
+    const token = JSON.parse(localStorage.getItem("token"))
+    const res = await axios.get(API_URL + "/id/" +_id, {
+        headers: {
+            Authorization: token
+        }
+    })
     return res.data
 }
 const getPostByTitle = async (title) => {
