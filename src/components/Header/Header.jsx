@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { user } = useSelector((state) => {state.auth});
+  const { user } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   return (
