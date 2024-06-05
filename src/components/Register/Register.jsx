@@ -1,34 +1,36 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { register } from '../../features/auth/authSlice';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate;
   const [formData, setFormData] = useState({
     name: "",
-    userName:"",
+    userName: "",
     email: "",
     password: "",
     dateOfBirth: "",
-    image:""
+    image: "",
   });
-  const { name,userName, email, password, dateOfBirth } = formData;
-//   const { isSuccess, message, isError } = useSelector((state) => state.auth);
+  const { name, userName, email, password, dateOfBirth } = formData;
+  //   const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
-//   useEffect(() => {
-//     if (isSuccess) {
-//       notification.success({
-//         message: "Success",
-//         description: message,
-//       });
-//     }
-//     if (isError) {
-//       notification.error({
-//         message: "Error!!!",
-//         description: message,
-//       });
-//     }
-//     dispatch(reset())
-//   }, [isSuccess, message, isError]);
+  //   useEffect(() => {
+  //     if (isSuccess) {
+  //       notification.success({
+  //         message: "Success",
+  //         description: message,
+  //       });
+  //     }
+  //     if (isError) {
+  //       notification.error({
+  //         message: "Error!!!",
+  //         description: message,
+  //       });
+  //     }
+  //     dispatch(reset())
+  //   }, [isSuccess, message, isError]);
 
   const dispatch = useDispatch();
 
@@ -42,7 +44,7 @@ const Register = () => {
     e.preventDefault();
     console.log(formData);
     dispatch(register(formData));
-    
+    navigate("/login")
   };
   return (
     <form onSubmit={onSubmit}>
@@ -55,7 +57,7 @@ const Register = () => {
       />
       <input
         type="text"
-        name="username"
+        name="userName"
         value={userName}
         onChange={onChange}
         placeholder="Insert your username"
@@ -82,7 +84,7 @@ const Register = () => {
         placeholder="Insert your birthday"
       />
 
-    <button type="submit">Register</button>
+      <button type="submit">Register</button>
     </form>
   );
 };
