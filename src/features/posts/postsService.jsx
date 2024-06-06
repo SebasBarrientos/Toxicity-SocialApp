@@ -8,7 +8,7 @@ const getPosts = async (page) => {
 }
 
 const getPostById = async (_id) => {
-    const token = JSON.parse(localStorage.getItem("token"))
+    const token = localStorage.getItem("token")
     const res = await axios.get(API_URL + "/id/" +_id, {
         headers: {
             Authorization: token
@@ -21,7 +21,7 @@ const getPostByTitle = async (title) => {
     return res.data
 }
 const addPost = async (formData) => {
-    const token = JSON.parse(localStorage.getItem("token"));
+    const token = localStorage.getItem("token");
     console.log(token);
     await axios.post(API_URL, formData, {
         headers: {

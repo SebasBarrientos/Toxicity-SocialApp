@@ -1,5 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById } from "../../features/auth/authSlice";
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -8,15 +9,23 @@ const formatDate = (dateString) => {
 
 const Profile = () => {
   const { user, isLoading } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   if (isLoading) {
     return <div>Cargando...</div>;
   }
 
+  useEffect(() => {
+    if (user) {
+      dispatch(getUserById(user._id));
+    }
+  }, [user]);
+
   return (
     <div>
       <div>Profile</div>
       <div>
+        <p>ID : {user._id}</p>
         <p>Nombre de usuario: {user.name}</p>
         <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
       </div>
