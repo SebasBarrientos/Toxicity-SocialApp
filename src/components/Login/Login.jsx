@@ -20,8 +20,8 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate("/profile")
     dispatch(login(formData));
+    navigate("/profile")
   };
   return (
     <form onSubmit={onSubmit}>

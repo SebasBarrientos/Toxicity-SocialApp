@@ -8,21 +8,23 @@ const formatDate = (dateString) => {
 };
 
 const Profile = () => {
-  const { user, isLoading } = useSelector((state) => state.auth);
+  const { user, isLoading,token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
- 
-
   useEffect(() => {
-    dispatch(getLoggedUser());
-  }, []);
+    if(token){
 
+      dispatch(getLoggedUser());
+    }
+  }, [token]);
+ 
+  
   if (isLoading) {
-    return <div>Cargando...</div>;
+    return <div>CARGANDO</div>;
   }
+  
   return (
     <div>
-      {console.log(user)}
       <div>Profile</div>
       <div>
         <p>ID : {user._id}</p>
