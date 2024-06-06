@@ -17,6 +17,7 @@ const Post = () => {
           <div key={post._id} className="bg-white shadow-md rounded-lg overflow-hidden mb-4">
             {console.log(post)}
             <Link to={"/postdetail/" + post._id} className="no-underline hover:underline">
+              <h3>{post.userId?.userName}</h3>
               <div className="h-[350px] flex justify-center items-center bg-gray-100 shadow-lg">
                 <img src={`https://back-end-red-social.onrender.com/` + post.imgpost} alt="" className="max-h-[350px]" />
               </div>

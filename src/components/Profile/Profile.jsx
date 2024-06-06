@@ -8,21 +8,19 @@ const formatDate = (dateString) => {
 };
 
 const Profile = () => {
-  const { user, isLoading,token } = useSelector((state) => state.auth);
+  const { user, isLoading, token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(token){
-
+    if (token) {
       dispatch(getLoggedUser());
     }
   }, [token]);
- 
-  
+
   if (isLoading) {
     return <div>CARGANDO</div>;
   }
-  
+
   return (
     <div>
       <div>Profile</div>
@@ -36,7 +34,10 @@ const Profile = () => {
         <div>
           {user.posts ? (
             user.posts.map((post, index) => (
-              <div key={index}>{post.content}</div>
+              <div key={index}>
+                <div>{post._id}</div>
+                <div><img src={"https://back-end-red-social.onrender.com/" +post.imgpost} alt="" /></div>
+              </div>
             ))
           ) : (
             <p>No hay posts disponibles.</p>
