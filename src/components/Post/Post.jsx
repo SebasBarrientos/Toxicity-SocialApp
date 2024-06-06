@@ -41,8 +41,8 @@ const Post = () => {
               <div>
                 {post.commentsIds.map((comment) => {
                   return (
-                    <div>
-                      <p>{comment.userId.name}</p>
+                    <div key={comment._id}>
+                      <p>{comment.userId?.name}</p>
                       <p>{comment.bodyText}</p>
                     </div>
                   );
