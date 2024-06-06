@@ -35,8 +35,18 @@ const Profile = () => {
           {user.posts ? (
             user.posts.map((post, index) => (
               <div key={index}>
-                <div>{post._id}</div>
-                <div><img src={"https://back-end-red-social.onrender.com/" +post.imgpost} alt="" /></div>
+                <div>{post.caption}</div>
+                <div>
+                  <img
+                    src={
+                      "https://back-end-red-social.onrender.com/" + post.imgpost
+                    }
+                    alt=""
+                  />
+                </div>
+                <div>{post.location}</div>
+                <div>{post.likes}</div>
+                <div>{post.commentsIds}</div>
               </div>
             ))
           ) : (
