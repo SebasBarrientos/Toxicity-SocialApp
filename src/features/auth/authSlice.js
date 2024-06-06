@@ -7,7 +7,7 @@ const token = localStorage.getItem("token") || "";
 const initialState = {
   user: user,
   token: token,
-  isLoading: false,
+  isLoading: true,
 };
 
 export const authSlice = createSlice({
@@ -24,26 +24,26 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoading = false
+        })
+        
+        .addCase(logout.fulfilled, (state) => {
+          state.user = null;
+          state.token = "";
+          state.isLoading = true
       })
-      .addCase(login.pending, (state, action) => {
+      .addCase(getLoggedUser.fulfilled, (state, action) => {
+        state.user = action.payload.userData;
+        state.isLoading = false;
+      })
+      .addCase(getLoggedUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(logout.fulfilled, (state) => {
-        state.user = null;
-        state.token = "";
-      })
-      .addCase(getUserById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.user = action.payload;
-      });
   },
 });
 
-export const getUserById = createAsyncThunk(
-  "auth/getUserById",
-  async (id) => {
+export const getLoggedUser = createAsyncThunk("auth/getLoggedUser", async () => {
     try {
-      return await authService.getUserById(id);
+      return await authService.getLoggedUser();
     } catch (error) {
       console.error(error);
     }

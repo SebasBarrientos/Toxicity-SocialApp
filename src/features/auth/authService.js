@@ -29,9 +29,9 @@ const logout = async () => {
   return res.data;
 };
 
-const getUserById = async (id) => {
+const getLoggedUser = async () => {
   const token = localStorage.getItem("token");
-  const res = await axios.get(API_URL + "/users/id/" + id, {
+  const res = await axios.get(API_URL + "/users/" , {
     headers: {
       authorization: token,
     },
@@ -43,7 +43,7 @@ const authService = {
   register,
   login,
   logout,
-  getUserById,
+  getLoggedUser,
 };
 
 export default authService;
