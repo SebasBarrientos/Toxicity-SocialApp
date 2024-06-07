@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import commentsService from "../../features/comment/commentService";
-import { getPosts } from "../../features/posts/postsSlice";
+import { getPosts, like } from "../../features/posts/postsSlice";
+import { HeartTwoTone } from "@ant-design/icons";
 
 const Post = () => {
   const { posts, isLoading } = useSelector((state) => state.posts);
@@ -50,6 +51,13 @@ const Post = () => {
               </div>
             </Link>
 
+            <div className="like-post">{post.likes.length} likes</div>
+
+            <div>
+              <HeartTwoTone twoToneColor="#eb2f96" onClick={() => {
+                dispatch(like(post._id))
+              }} />
+            </div>
             <input
               type="text"
               className="border"

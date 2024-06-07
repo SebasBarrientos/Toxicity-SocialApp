@@ -4,7 +4,7 @@ import postsService from "./postsService";
 const initialState = {
   posts: [],
   isLoading: false,
-  post: {}
+  post: {},
 };
 
 export const addPost = createAsyncThunk("posts/addPost", async (dataForm) => {
@@ -17,20 +17,34 @@ export const getPosts = createAsyncThunk("posts/getPosts", async (page) => {
     console.error(error);
   }
 });
-export const getPostById = createAsyncThunk("posts/getPostById", async (_id) => {
+export const getPostById = createAsyncThunk(
+  "posts/getPostById",
+  async (_id) => {
+    try {
+      return await postsService.getPostById(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+export const getPostByTitle = createAsyncThunk(
+  "posts/getPostByTitle",
+  async (title) => {
+    try {
+      return await postsService.getPostByTitle(title);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+export const like = createAsyncThunk("posts/like", async (_id) => {
   try {
-    return await postsService.getPostById(_id)
+    return await postsService.like(_id);
   } catch (error) {
     console.error(error);
   }
-})
-export const getPostByTitle = createAsyncThunk("posts/getPostByTitle", async (title) => {
-  try {
-    return await postsService.getPostByTitle(title)
-  } catch (error) {
-    console.error(error);
-  }
-})
+});
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -40,26 +54,36 @@ export const postsSlice = createSlice({
     builder
       .addCase(getPosts.fulfilled, (state, action) => {
         state.posts = action.payload;
-        state.isLoading = false
+        state.isLoading = false;
       })
       .addCase(getPosts.pending, (state) => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(getPostById.pending, (state) => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(getPostById.fulfilled, (state, action) => {
-        state.post = action.payload
-        state.isLoading = false
-
+        state.post = action.payload;
+        state.isLoading = false;
       })
       .addCase(getPostByTitle.fulfilled, (state, action) => {
-        state.posts = action.payload
+        state.posts = action.payload;
       })
       .addCase(addPost.fulfilled, (state, action) => {
-        state.isLoading = false
+        state.isLoading = false;
       })
-  }
+      .addCase(like.fulfilled, (state, action) => {
+        console.log(state.posts);
+        const posts = state.posts.map((post) => {
+          console.log(post);
+          if (post._id === action.payload._id) {
+            post = action.payload;
+          }
+          return post;
+        });
+        state.posts = posts;
+      });
+  },
 });
 
 export default postsSlice.reducer;
