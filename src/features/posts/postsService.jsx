@@ -3,7 +3,7 @@ import axios from "axios"
 const API_URL = "https://back-end-red-social.onrender.com/posts"
 
 const getPosts = async (page) => {
-    const res = await axios.get(API_URL+"?page="+page) ///posts?page=1
+    const res = await axios.get(API_URL+"?page="+page)
     return res.data 
 }
 
@@ -30,6 +30,8 @@ const addPost = async (formData) => {
         }
     });
 }
+
+
 
 const postsService = {
     getPosts,

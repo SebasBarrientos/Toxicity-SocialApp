@@ -20,7 +20,7 @@ const logout = async () => {
   const token = localStorage.getItem("token");
   const res = await axios.delete(API_URL + "/users/logout", {
     headers: {
-      authorization: token,
+      Authorization: token,
     },
   });
   if (res.data) {

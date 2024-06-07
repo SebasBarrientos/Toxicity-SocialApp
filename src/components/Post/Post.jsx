@@ -1,14 +1,25 @@
 import { Spin } from "antd";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import commentsService from "../../features/comment/commentService";
+import { getPosts } from "../../features/posts/postsSlice";
 
 const Post = () => {
   const { posts, isLoading } = useSelector((state) => state.posts);
+  const [bodyText, setbodyText] = useState({ bodyText: "" });
+  const dispatch = useDispatch();
 
+  const onChange = (e) => {
+    setbodyText({ bodyText: e.target.value });
+  };
   if (isLoading) {
     return <Spin />;
   }
+
+  const handleSubmitComment = (bodyText, postCommented) => {
+    return commentsService.addComment(bodyText, postCommented);
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -18,12 +29,12 @@ const Post = () => {
             key={post._id}
             className="bg-white shadow-md rounded-lg overflow-hidden mb-4"
           >
-            {console.log(post)}
             <Link
               to={"/postdetail/" + post._id}
               className="no-underline hover:underline"
             >
               <h3>{post.userId?.userName}</h3>
+
               <div className="h-[350px] flex justify-center items-center bg-gray-100 shadow-lg">
                 <img
                   src={
@@ -33,21 +44,38 @@ const Post = () => {
                   className="max-h-[350px]"
                 />
               </div>
+
               <div className="p-4">
                 <p className="text-gray-700 text-base">{post.caption}</p>
               </div>
-
             </Link>
-              <div>
-                {post.commentsIds.map((comment) => {
-                  return (
-                    <div key={comment._id}>
-                      <p>{comment.userId?.name}</p>
-                      <p>{comment.bodyText}</p>
-                    </div>
-                  );
-                })}
-              </div>
+
+            <input
+              type="text"
+              className="border"
+              name="bodyText"
+              onChange={onChange}
+            />
+
+            <button
+              onClick={async () => {
+                await handleSubmitComment(bodyText, post._id);
+                dispatch(getPosts());
+              }}
+            >
+              Submit comment
+            </button>
+
+            <div>
+              {post.commentsIds.map((comment) => {
+                return (
+                  <div key={comment._id}>
+                    <p>{comment.userId?.name}</p>
+                    <p>{comment.bodyText}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         );
       })}

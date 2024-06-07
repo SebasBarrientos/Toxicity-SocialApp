@@ -10,12 +10,14 @@ const Login = () => {
     password: "",
   });
   const { email, password } = formData;
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+  
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
