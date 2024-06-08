@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Login.scss";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,19 +24,30 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formData));
-    navigate("/profile")
+    navigate("/profile");
   };
+
   return (
-    <form onSubmit={onSubmit}>
-      <input type="email" name="email" value={email} onChange={onChange} />
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={onChange}
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-form">
+      <form onSubmit={onSubmit}>
+        <input 
+          type="email" 
+          name="email" 
+          value={email} 
+          onChange={onChange} 
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          placeholder="Password"
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 };
+
 export default Login;

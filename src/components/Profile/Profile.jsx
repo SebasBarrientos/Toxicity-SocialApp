@@ -29,7 +29,7 @@ const Profile = () => {
       </div>
       <div className="profile-details">
         <p>ID: {user._id}</p>
-        <p>Nombre de usuario: {user.name}</p>
+        <p>Nombre de usuario: {user.userName}</p>
         <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
       </div>
       <div className="profile-posts">
