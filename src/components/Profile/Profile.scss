@@ -1,0 +1,89 @@
+// Profile.scss
+
+@import '../../colors/colors.scss';
+
+.profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: $primary-color;
+    }
+  }
+
+  .profile-details {
+    margin-bottom: 2rem;
+
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: $text-color;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .profile-posts {
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+
+    .post {
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+
+      .post-caption {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        color: $text-color;
+        margin-bottom: 0.5rem;
+      }
+
+      .post-image {
+        margin-bottom: 0.5rem;
+
+        img {
+          max-width: 100%;
+          border-radius: 8px;
+        }
+      }
+
+      .post-location,
+      .post-likes,
+      .post-comments {
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.875rem;
+        color: $text-color;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .no-posts {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: $text-color;
+    }
+  }
+}
+
+.loading {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: $primary-color;
+  margin-top: 2rem;
+}

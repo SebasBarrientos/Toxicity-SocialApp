@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
-
+import "./Header.scss"
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();

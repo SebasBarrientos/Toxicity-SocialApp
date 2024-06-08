@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedUser } from "../../features/auth/authSlice";
+import './Profile.scss';
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -18,39 +19,39 @@ const Profile = () => {
   }, [token]);
 
   if (isLoading) {
-    return <div>CARGANDO</div>;
+    return <div className="loading">CARGANDO</div>;
   }
 
   return (
-    <div>
-      <div>Profile</div>
-      <div>
-        <p>ID : {user._id}</p>
+    <div className="profile">
+      <div className="profile-header">
+        <h1>Profile</h1>
+      </div>
+      <div className="profile-details">
+        <p>ID: {user._id}</p>
         <p>Nombre de usuario: {user.name}</p>
         <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
       </div>
-      <div>
+      <div className="profile-posts">
         <h2>Posts</h2>
         <div>
           {user.posts ? (
             user.posts.map((post, index) => (
-              <div key={index}>
-                <div>{post.caption}</div>
-                <div>
+              <div key={index} className="post">
+                <div className="post-caption">{post.caption}</div>
+                <div className="post-image">
                   <img
-                    src={
-                      "https://back-end-red-social.onrender.com/" + post.imgpost
-                    }
+                    src={"https://back-end-red-social.onrender.com/" + post.imgpost}
                     alt=""
                   />
                 </div>
-                <div>{post.location}</div>
-                <div>{post.likes}</div>
-                <div>{post.commentsIds}</div>
+                <div className="post-location">{post.location}</div>
+                <div className="post-likes">Likes: {post.likes}</div>
+                <div className="post-comments">Comments: {post.commentsIds}</div>
               </div>
             ))
           ) : (
-            <p>No hay posts disponibles.</p>
+            <p className="no-posts">No hay posts disponibles.</p>
           )}
         </div>
       </div>

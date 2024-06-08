@@ -1,0 +1,53 @@
+// Header.scss
+
+@import '../../colors/colors.scss';
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $nav-background-color;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: $primary-color;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  div {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+
+    button {
+      background-color: $button-background;
+      color: $button-text-color;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: darken($button-background, 10%);
+      }
+    }
+  }
+}

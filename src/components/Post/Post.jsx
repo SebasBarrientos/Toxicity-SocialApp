@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import commentsService from "../../features/comment/commentService";
 import { getPosts, like } from "../../features/posts/postsSlice";
 import { HeartTwoTone } from "@ant-design/icons";
+import "./Post.scss"
 
 const Post = () => {
   const { posts, isLoading } = useSelector((state) => state.posts);
@@ -23,61 +24,50 @@ const Post = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container">
       {posts.map((post) => {
         return (
-          <div
-            key={post._id}
-            className="bg-white shadow-md rounded-lg overflow-hidden mb-4"
-          >
-            <Link
-              to={"/postdetail/" + post._id}
-              className="no-underline hover:underline"
-            >
+          <div key={post._id} className="post-card">
+            <Link to={"/postdetail/" + post._id} className="no-underline hover:underline">
               <h3>{post.userId?.userName}</h3>
 
-              <div className="h-[350px] flex justify-center items-center bg-gray-100 shadow-lg">
-                <img
-                  src={
-                    `https://back-end-red-social.onrender.com/` + post.imgpost
-                  }
-                  alt=""
-                  className="max-h-[350px]"
-                />
+              <div className="post-image-container">
+                <img src={`https://back-end-red-social.onrender.com/` + post.imgpost} alt="" />
               </div>
 
-              <div className="p-4">
+              <div className="post-caption">
                 <p className="text-gray-700 text-base">{post.caption}</p>
               </div>
             </Link>
 
-            <div className="like-post">{post.likes.length} likes</div>
-
-            <div>
+            <div className="like-post">
+              {post.likes.length} likes
               <HeartTwoTone twoToneColor="#eb2f96" onClick={() => {
                 dispatch(like(post._id))
               }} />
             </div>
-            <input
-              type="text"
-              className="border"
-              name="bodyText"
-              onChange={onChange}
-            />
 
-            <button
-              onClick={async () => {
-                await handleSubmitComment(bodyText, post._id);
-                dispatch(getPosts());
-              }}
-            >
-              Submit comment
-            </button>
+            <div className="comment-section">
+              <input
+                type="text"
+                className="border"
+                name="bodyText"
+                onChange={onChange}
+              />
+              <button
+                onClick={async () => {
+                  await handleSubmitComment(bodyText, post._id);
+                  dispatch(getPosts());
+                }}
+              >
+                Submit comment
+              </button>
+            </div>
 
-            <div>
+            <div className="comments-list">
               {post.commentsIds.map((comment) => {
                 return (
-                  <div key={comment._id}>
+                  <div key={comment._id} className="comment">
                     <p>{comment.userId?.name}</p>
                     <p>{comment.bodyText}</p>
                   </div>
