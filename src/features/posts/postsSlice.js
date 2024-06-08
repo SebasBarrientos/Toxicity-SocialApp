@@ -46,6 +46,8 @@ export const like = createAsyncThunk("posts/like", async (_id) => {
   }
 });
 
+export const modifyComment = createAsyncThunk("post")
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,

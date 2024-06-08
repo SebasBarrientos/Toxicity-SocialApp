@@ -1,3 +1,4 @@
+import { LineStrokeColorVar } from "antd/es/progress/style";
 import axios from "axios";
 
 const API_URL = "https://back-end-red-social.onrender.com/posts";
@@ -36,7 +37,7 @@ const like = async (_id) => {
   const res = await axios.put(
     API_URL + "/likes/" + _id,
     {},
-    { headers: { Authorization:token } }
+    { headers: { Authorization: token } }
   );
   return res.data;
 };
