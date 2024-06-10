@@ -18,7 +18,7 @@ const PostDetail = () => {
   }
 
   return (
-    <div>
+    <div style={{position: "sticky"}}>
         {console.log(post)}
       <h1>PostDetail</h1>
       <p>{post.caption}</p>

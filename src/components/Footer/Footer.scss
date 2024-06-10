@@ -3,10 +3,8 @@
 @import '../../colors/colors.scss';
 
 footer {
-  background-color: $nav-background-color;
   color: $text-color;
   padding: 2rem 0;
-  border-top: 1px solid $border-color;
   text-align: center;
 
   .footer-content {

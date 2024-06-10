@@ -10,11 +10,20 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import PostDetail from './components/PostDetail/PostDetail'
+import BackGround from './backGround/BackGround'
 
 function App() {
 
   return (
     <>
+    {/* <div style={  
+      {backgroundImage: 'url(../../../public/bg.jpg)', // URL de la imagen de fondo
+      backgroundSize: 'cover', // Ajusta la imagen para que cubra todo el contenedor
+      backgroundPosition: 'center' // Centra la imagen
+      }}> */}
+
+  <BackGround/>
+  <>
       <BrowserRouter>
       
             <Header />
@@ -31,6 +40,9 @@ function App() {
           
         
       </BrowserRouter>
+      </>
+  
+    {/* </div> */}
     </>
   )
 }

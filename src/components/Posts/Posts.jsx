@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Post from "../Post/Post";
 import { useDispatch } from "react-redux";
 import { getPosts } from "../../features/posts/postsSlice";
+import Home from "../Home/Home";
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Posts = () => {
     <div>
       <button onClick={() => setPage((page) => page + 1)}>Next</button>
       <h1>Posts</h1>
-      <Post />
+      <Home />
       <button onClick={() => setPage((page) => page + 1)}>Next</button>
       <button onClick={() => setPage((page) => page - 1)}>back</button>
     </div>
