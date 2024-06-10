@@ -18,9 +18,19 @@ const modifyComment = async (_id, body) => {
   return res.data;
 };
 
+const deleteComment = async (_id) => {
+  console.log(_id);
+  const token = localStorage.getItem("token");
+  const res = await axios.delete(`${API_URL}/id/${_id}`, {
+    headers: { Authorization: token },
+  });
+  return res.data;
+};
+
 const commentsService = {
   addComment,
   modifyComment,
+  deleteComment
 };
 
 export default commentsService;
