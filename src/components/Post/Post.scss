@@ -1,3 +1,4 @@
+// Post.scss
 @import '../../colors/colors.scss';
 
 .container {
@@ -43,21 +44,27 @@
       color: $text-color;
     }
 
-    .like-post {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1rem;
-      color: $text-color;
-      margin: 0.5rem 0;
+    .interaction-buttons {
       display: flex;
       align-items: center;
+      gap: 1rem;
+      margin: 0.5rem 0;
 
-      .anticon {
-        margin-left: 0.5rem;
-        cursor: pointer;
-        transition: transform 0.2s ease;
+      .like-post, .dislike-post {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        color: $text-color;
+        display: flex;
+        align-items: center;
 
-        &:hover {
-          transform: scale(1.2);
+        .anticon {
+          margin-left: 0.5rem;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.2);
+          }
         }
       }
     }
@@ -103,11 +110,11 @@
         font-size: 1rem;
         color: $text-color;
         border-bottom: 1px solid $border-color;
-      
+
         p {
           margin: 0.25rem 0;
         }
-      
+
         &:last-child {
           border-bottom: none;
         }
@@ -117,7 +124,7 @@
           align-items: center;
           gap: 0.5rem;
           margin-top: 0.5rem;
-      
+
           button {
             padding: 0.25rem 0.5rem;
             font-size: 0.875rem;
@@ -127,7 +134,7 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-      
+
             &:hover {
               background-color: darken($button-background, 10%);
             }

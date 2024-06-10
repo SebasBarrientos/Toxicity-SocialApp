@@ -1,4 +1,4 @@
-import { LineStrokeColorVar } from "antd/es/progress/style";
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import axios from "axios";
 
 const API_URL = "https://back-end-red-social.onrender.com/posts";
@@ -32,6 +32,22 @@ const addPost = async (formData) => {
   });
 };
 
+const updatePost = async (_id, body) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.put(`${API_URL}/id/${_id}`, body, {
+    headers: { Authorization: token },
+  });
+  return res.data.post;
+};
+
+const deletePost = async (_id) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.delete(`${API_URL}/id/${_id}`, {
+    headers: { Authorization: token },
+  });
+  return res.data.post;
+};
+
 const like = async (_id) => {
   const token = localStorage.getItem("token");
   const res = await axios.put(
@@ -42,12 +58,26 @@ const like = async (_id) => {
   return res.data;
 };
 
+const dislike = async (_id) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.put(
+    API_URL + "/dislikes/" + _id,
+    {},
+    {
+      headers: { Authorization: token },
+    }
+  );
+  return res.data;
+};
 const postsService = {
   getPosts,
   getPostById,
   getPostByTitle,
   addPost,
   like,
+  dislike,
+  deletePost,
+  updatePost
 };
 
 export default postsService;

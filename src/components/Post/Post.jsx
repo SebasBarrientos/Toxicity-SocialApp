@@ -1,10 +1,10 @@
 import { Spin } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import commentsService from "../../features/comment/commentService";
-import { getPosts, like } from "../../features/posts/postsSlice";
-import { HeartTwoTone } from "@ant-design/icons";
+import { getPosts, like, dislike } from "../../features/posts/postsSlice";
+import { HeartTwoTone, FrownOutlined } from "@ant-design/icons";
 import "./Post.scss";
 
 const Post = () => {
@@ -12,6 +12,7 @@ const Post = () => {
   const [bodyText, setbodyText] = useState("");
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editedComment, setEditedComment] = useState("");
+
   const dispatch = useDispatch();
 
   const onChange = (e) => {
@@ -67,14 +68,24 @@ const Post = () => {
               </div>
             </Link>
 
-            <div className="like-post">
-              {post.likes.length} likes
-              <HeartTwoTone
-                twoToneColor="#eb2f96"
-                onClick={() => {
-                  dispatch(like(post._id));
-                }}
-              />
+            <div className="interaction-buttons">
+              <div className="like-post">
+                {post.likes.length} likes
+                <HeartTwoTone
+                  twoToneColor="#eb2f96"
+                  onClick={() => {
+                    dispatch(like(post._id));
+                  }}
+                />
+              </div>
+
+              <div className="dislike-post">
+                <FrownOutlined
+                  onClick={() => {
+                    dispatch(dislike(post._id));
+                  }}
+                />
+              </div>
             </div>
 
             <div className="comment-section">
@@ -113,7 +124,10 @@ const Post = () => {
                           >
                             Save
                           </button>
-                          <button onClick={cancelEdit} className="cancel-button">
+                          <button
+                            onClick={cancelEdit}
+                            className="cancel-button"
+                          >
                             Cancel
                           </button>
                         </div>
@@ -122,7 +136,9 @@ const Post = () => {
                       <>
                         <p>{comment.bodyText}</p>
                         <button
-                          onClick={() => startEdit(comment._id, comment.bodyText)}
+                          onClick={() =>
+                            startEdit(comment._id, comment.bodyText)
+                          }
                           className="edit-button"
                         >
                           Edit
@@ -131,7 +147,6 @@ const Post = () => {
                     )}
                   </div>
                 );
-                
               })}
             </div>
           </div>
