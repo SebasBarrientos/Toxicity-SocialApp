@@ -10,11 +10,13 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import PostDetail from './components/PostDetail/PostDetail'
+import BackGround from './components/background/BackGround'
 
 function App() {
 
   return (
     <>
+      <BackGround/>
       <BrowserRouter>
       
             <Header />

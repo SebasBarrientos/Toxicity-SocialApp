@@ -5,8 +5,12 @@ import './index.css'
 import { store } from './app/store.js'
 import { Provider } from 'react-redux'
 
+import './styles.css'
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
+      <App />
     </Provider>
 )

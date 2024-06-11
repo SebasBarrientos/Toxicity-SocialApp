@@ -5,7 +5,7 @@ import { dislike, getPostById, getPosts, like } from "../../features/posts/posts
 import { Spin } from "antd";
 import { HeartTwoTone, FrownOutlined } from "@ant-design/icons";
 import commentsService from "../../features/comment/commentService";
-
+import "./PostDetail.scss"
 const PostDetail = () => {
   const { _id } = useParams();
   const { post, isLoadingPost } = useSelector((state) => state.posts);
