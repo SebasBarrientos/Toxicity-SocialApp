@@ -22,7 +22,7 @@ const PostDetail = () => {
         {console.log(post)}
       <h1>PostDetail</h1>
       <p>{post.caption}</p>
-      <img src={`https://back-end-red-social.onrender.com/` + post.imgpost} alt="" className="max-h-[350px]" />
+      <img src={`http://localhost:3000/` + post.imgpost} alt="" className="max-h-[350px]" />
       
     </div>
   );

@@ -72,7 +72,7 @@ const Post = () => {
             <Link to={"/postdetail/" + post._id} className="no-underline hover:underline">
               <h3>{post.userId?.userName}</h3>
               <div className="post-image-container">
-                <img src={`https://back-end-red-social.onrender.com/${post.imgpost}`} alt="" />
+                <img src={`http://localhost:3000/${post.imgpost}`} alt="" />
               </div>
               <div className="post-caption">
                 <p className="text-gray-700 text-base">{post.caption}</p>
@@ -138,7 +138,7 @@ function Carousel({ posts, onCardClick, radius = 1.4 }) {
   return posts.map((post, i) => (
     <Card
       key={post._id}
-      url={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+      url={`http://localhost:3000/${post.imgpost}`}
       position={[Math.sin((i / posts.length) * Math.PI * 2) * radius, 0, Math.cos((i / posts.length) * Math.PI * 2) * radius]}
       rotation={[0, Math.PI + (i / posts.length) * Math.PI * 2, 0]}
       onClick={() => onCardClick(post._id)}

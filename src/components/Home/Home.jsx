@@ -13,10 +13,11 @@ import { getPosts } from '../../features/posts/postsSlice'
 export const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    dispatch(getPosts());
-  }, []);
+    dispatch(getPosts(page));
+  }, [page]);
+
 
   const { posts } = useSelector((state) => state.posts); //VER DONDE MIERDA VA
   const handleCardClick = (postId) => {
@@ -26,6 +27,9 @@ export const Home = () => {
     <div style={{ height: '550px', 
     
     }}>
+      <button onClick={() => {setPage((page) => page + 1), console.log(page)}}>Next</button>
+   
+          <button onClick={() => {page==1 ? setPage(1) :setPage((page) => page - 1), console.log(page)}}>back</button>
       <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
         <fog attach="fog" args={['#a79', 8.5, 12]} />
         <ScrollControls pages={4} infinite style={{ opacity: 0 }}>
@@ -56,7 +60,7 @@ function Carousel({ posts, onCardClick, radius = 2.3 }) {
   return posts.map((post, i) => (
     <Card
       key={post._id}
-      url={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+      url={`http://localhost:3000/${post.imgpost}`}
       position={[Math.sin((i / posts.length) * Math.PI * 2) * radius, 0, Math.cos((i / posts.length) * Math.PI * 2) * radius]}
       rotation={[0, Math.PI + (i / posts.length) * Math.PI * 2, 0]}
       onClick={() => onCardClick(post._id)}

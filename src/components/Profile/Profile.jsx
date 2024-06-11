@@ -41,7 +41,7 @@ const Profile = () => {
                 <div className="post-caption">{post.caption}</div>
                 <div className="post-image">
                   <img
-                    src={"https://back-end-red-social.onrender.com/" + post.imgpost}
+                    src={"http://localhost:3000/" + post.imgpost}
                     alt=""
                   />
                 </div>

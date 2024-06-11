@@ -1,7 +1,7 @@
 import { LineStrokeColorVar } from "antd/es/progress/style";
 import axios from "axios";
 
-const API_URL = "https://back-end-red-social.onrender.com/posts";
+const API_URL = "http://localhost:3000/posts";
 
 const getPosts = async (page) => {
   const res = await axios.get(API_URL + "?page=" + page);
