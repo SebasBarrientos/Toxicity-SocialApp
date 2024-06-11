@@ -3,7 +3,8 @@ import postsService from "./postsService";
 
 const initialState = {
   posts: [],
-  isLoading: false,
+  isLoading: true,
+  isLoadingPost: true,
   post: {},
 };
 
@@ -79,11 +80,11 @@ export const postsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getPostById.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingPost = true;
       })
       .addCase(getPostById.fulfilled, (state, action) => {
         state.post = action.payload;
-        state.isLoading = false;
+        state.isLoadingPost = false;
       })
       .addCase(getPostByTitle.fulfilled, (state, action) => {
         state.posts = action.payload;
@@ -108,6 +109,7 @@ export const postsSlice = createSlice({
           return post;
         });
         state.posts = posts;
+        state.post= action.payload
       })
       .addCase(dislike.fulfilled, (state, action) => {
         const posts = state.posts.map((post) => {
@@ -117,6 +119,7 @@ export const postsSlice = createSlice({
           return post;
         });
         state.posts = posts;
+        state.post= action.payload
       });
   },
 });
