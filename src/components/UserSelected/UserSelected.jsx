@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import authService from "../../features/auth/authService";
 import { useParams } from "react-router-dom";
+
 
 
 const formatDate = (dateString) => {
@@ -15,34 +15,40 @@ const UserSelected = () => {
   useEffect( () => {
     const fetchUser = async () => {
       const searchedUser = await authService.getSelectedUser(_id);
-      setUser(searchedUser);
+      console.log("User data received:", searchedUser)
+      setUser(searchedUser );
     };
 
     fetchUser();
   }, [])
-
+ const follow = (_id)=>{
+  authService.followUser(_id)
+ }
   if (!user) {
     return <div className="loading">CARGANDO</div>;
   }
 
   return (
     <div className="profile">
+      {console.log(user)}
       <div className="profile-header">
-        <h1>Profile</h1>
+        <h1>Profile</h1> 
       </div>
+        <button onClick={()=> follow(_id)}>Follow</button>
       <div className="profile-details">
-        <p>Followers: {user.followers?.length}</p>
-        <p>Nombre de usuario: {user.userName}</p>
-        <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
+        <p>Followers: {user.user.followers.length = 0 ?  "0" : user.user.followers.map((follower) => (
+          follower.name
+        ))}</p>
+        <p>Nombre de usuario: {user.user.userName}</p>
+        <p>Fecha de nacimiento: {formatDate(user.user.dateOfBirth)}</p>
       </div>
       <div className="profile-posts">
         <h2>Posts</h2>
         <div className="post-container">
-          {user.posts ? (
-            user.posts.map((post, index) => (
+          {user.user.posts ? (
+            user.user.posts.map((post) => (
 
-              <div key={index} className="post">
-                
+              <div key={post._id} className="post">
                 <div className="post-image">
                   <img
                     src={`https://back-end-red-social.onrender.com/${post.imgpost}`}

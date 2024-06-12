@@ -45,6 +45,17 @@ const getSelectedUser = async (_id) => {
       authorization: token,
     },
   });
+  console.log(res.data);
+  return res.data;
+};
+const followUser = async (_id) => {
+  const token = localStorage.getItem("token");
+  console.log(token);
+  const res = await axios.put(API_URL + "/users/follow/"+_id ,"", {
+    headers: {
+      authorization: token,
+    },
+  });
   return res.data.user;
 };
 
@@ -53,7 +64,8 @@ const authService = {
   login,
   logout,
   getLoggedUser,
-  getSelectedUser
+  getSelectedUser,
+  followUser
 };
 
 export default authService;

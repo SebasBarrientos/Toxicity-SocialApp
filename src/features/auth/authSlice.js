@@ -38,6 +38,7 @@ export const authSlice = createSlice({
       .addCase(getLoggedUser.pending, (state) => {
         state.isLoading = true
       })
+
   },
 });
 
@@ -53,6 +54,7 @@ export const getLoggedUser = createAsyncThunk("auth/getLoggedUser", async () => 
 export const register = createAsyncThunk("auth/register", async (userData) => {
   return await authService.register(userData);
 });
+
 
 export const login = createAsyncThunk("auth/login", async (user) => {
   try {
