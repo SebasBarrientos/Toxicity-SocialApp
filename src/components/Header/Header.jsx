@@ -2,14 +2,14 @@ import React, { useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
-import "./Header.scss"
+import "./Header.scss";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onLogout = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(logout());
     navigate("/login");
   };
