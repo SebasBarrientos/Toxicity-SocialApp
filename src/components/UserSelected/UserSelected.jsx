@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import authService from "../../features/auth/authService";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 
@@ -20,9 +20,10 @@ const UserSelected = () => {
     };
 
     fetchUser();
-  }, [])
+  }, [user])
   const follow = (_id) => {
     authService.followUser(_id)
+
   }
   if (!user) {
     return <div className="loading">CARGANDO</div>;
@@ -55,21 +56,17 @@ const UserSelected = () => {
 
               <div key={post._id} className="post">
                 <div className="post-image">
+                <Link to={"/postDetail/" + post._id}>
                   <img
                     src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
                     alt=""
                   />
+                  </Link>
                   <div className="post-location">{post.location}</div>
                   <div className="post-likes">Likes: {post.likes.length}</div>
                   <div className="post-comments">
                     Comments: {post.commentsIds.length}
                   </div>
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDeletePost(post._id)}
-                  >
-                    Delete post
-                  </button>
                 </div>
               </div>
             ))
