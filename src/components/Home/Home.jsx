@@ -34,7 +34,7 @@ export const Home = () => {
     <div style={{ height: '550px', 
     
     }}>
-      <button onClick={() => {setPage((page) => page + 1), console.log(page)}}>Next</button>
+      <button onClick={() => {setPage((page) => page + 1)}}>Next</button>
    
           <button onClick={() => {page==1 ? setPage(1) :setPage((page) => page - 1), console.log(page)}}>back</button>
       <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>

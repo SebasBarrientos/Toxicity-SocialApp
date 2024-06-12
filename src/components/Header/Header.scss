@@ -1,5 +1,3 @@
-// Header.scss
-
 @import '../../colors/colors.scss';
 
 nav {
@@ -18,6 +16,7 @@ nav {
 
   div {
     display: flex;
+    align-items: center;
     gap: 1rem;
 
     a {
@@ -29,6 +28,21 @@ nav {
 
       &:hover {
         color: $link-hover-color;
+      }
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.2);
       }
     }
 

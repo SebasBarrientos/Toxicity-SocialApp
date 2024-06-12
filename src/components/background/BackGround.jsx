@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import bg1 from '/bg.jpg'; // Asegúrate de que la ruta sea correcta
+import bg1 from '/bg.jpg';
 
 const BackGround = () => {
   const containerRef = useRef(null);

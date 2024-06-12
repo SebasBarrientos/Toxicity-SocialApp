@@ -17,7 +17,7 @@ const Header = () => {
   };
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       navigate("/search/" + search);
     }
   };
@@ -41,8 +41,13 @@ const Header = () => {
             <Link to="/createPost" className="hover:text-blue-500">
               Create Post
             </Link>
-            <input type="text" name="search" onKeyUp={handleSearch} />
-            <button type="primary" onClick={onLogout}>
+            <input
+              type="text"
+              name="search"
+              onKeyUp={handleSearch}
+              placeholder="Search..."
+            />
+            <button type="button" onClick={onLogout}>
               Logout
             </button>
           </>

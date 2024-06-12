@@ -3,22 +3,25 @@ import Post from "../Post/Post";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../features/posts/postsSlice";
 
+
 const Posts = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
- 
+
   useEffect(() => {
     dispatch(getPosts(page));
   }, [page]);
 
   return (
-    <div>
-      
-      <button onClick={() => setPage(page + 1)}>Next</button>
-      <h1>Posts</h1>
-      <Post />
-      <button onClick={() => setPage(page + 1)}>Next</button>
-      <button onClick={() => setPage(page - 1)}>back</button>
+    <div className="posts-container">
+      <h1 className="posts-title">Posts</h1>
+      <div className="post-list">
+        <Post />
+      </div>
+      <div className="pagination">
+        <button onClick={() => setPage(page - 1)} disabled={page === 1} className="pagination-button">Back</button>
+        <button onClick={() => setPage(page + 1)} className="pagination-button">Next</button>
+      </div>
     </div>
   );
 };
