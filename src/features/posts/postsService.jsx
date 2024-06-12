@@ -17,8 +17,14 @@ const getPostById = async (_id) => {
   });
   return res.data;
 };
-const getPostByTitle = async (title) => {
-  const res = await axios.get(API_URL + "/title/" + title);
+const getPostByName = async (caption) => {
+  const token = localStorage.getItem("token");
+  console.log(caption);
+  const res = await axios.get(API_URL + "/caption/?caption=" + caption, {
+    headers: {
+      Authorization: token,
+    },
+  });
   return res.data;
 };
 const addPost = async (formData) => {
@@ -72,12 +78,12 @@ const dislike = async (_id) => {
 const postsService = {
   getPosts,
   getPostById,
-  getPostByTitle,
+  getPostByName,
   addPost,
   like,
   dislike,
   deletePost,
-  updatePost
+  updatePost,
 };
 
 export default postsService;

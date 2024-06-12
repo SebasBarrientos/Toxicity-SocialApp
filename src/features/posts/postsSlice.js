@@ -37,11 +37,12 @@ export const getPostById = createAsyncThunk(
     }
   }
 );
-export const getPostByTitle = createAsyncThunk(
-  "posts/getPostByTitle",
-  async (title) => {
+export const getPostByName = createAsyncThunk(
+  "posts/getPostByName",
+  async (caption) => {
+    console.log('HOL')
     try {
-      return await postsService.getPostByTitle(title);
+      return await postsService.getPostByName(caption);
     } catch (error) {
       console.error(error);
     }
@@ -86,7 +87,8 @@ export const postsSlice = createSlice({
         state.post = action.payload;
         state.isLoadingPost = false;
       })
-      .addCase(getPostByTitle.fulfilled, (state, action) => {
+      .addCase(getPostByName.fulfilled, (state, action) => {
+        console.log('HIKAAASDASD');
         state.posts = action.payload;
       })
       .addCase(addPost.fulfilled, (state, action) => {
