@@ -1,18 +1,27 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 import "./Header.scss";
+
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
     navigate("/login");
   };
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    if (e.key == "Enter") {
+      navigate("/search/" + search);
+    }
+  };
+
   return (
     <nav>
       <h3>Toxicity</h3>
@@ -32,6 +41,7 @@ const Header = () => {
             <Link to="/createPost" className="hover:text-blue-500">
               Create Post
             </Link>
+            <input type="text" name="search" onKeyUp={handleSearch} />
             <button type="primary" onClick={onLogout}>
               Logout
             </button>

@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer'
 import CreatePost from './components/CreatePost/CreatePost'
 import PostDetail from './components/PostDetail/PostDetail'
 import BackGround from './components/background/BackGround'
+import Search from './components/Search/Search'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/search/:caption" element={<Search />} />
             </Routes>
             <Footer />
           
