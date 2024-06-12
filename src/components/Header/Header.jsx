@@ -19,6 +19,7 @@ const Header = () => {
     setSearch(e.target.value);
     if (e.key == "Enter") {
       navigate("/search/" + search);
+      
     }
   };
 

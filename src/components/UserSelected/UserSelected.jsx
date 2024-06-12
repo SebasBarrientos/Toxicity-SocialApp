@@ -33,7 +33,10 @@ const UserSelected = () => {
       {console.log(user.user.followers.length)}
       <div className="profile-header">
         <h1>{user.user.userName}</h1>
+        <img src={"http://localhost:3000/"+user.user.profilePic} alt="" />
+      
       </div>
+
       <button onClick={() => follow(_id)}>Follow</button>
     
       <div className="profile-details">
