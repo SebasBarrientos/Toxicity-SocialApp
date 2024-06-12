@@ -58,11 +58,14 @@ const Post = () => {
     <div className="container">
       {posts.map((post) => (
         <div key={post._id} className="post-card">
+           <Link to={"/userSelected/" + post.userId?._id}
+            className="no-underline hover:underline">
+           <h3>{post.userId?.userName}</h3>
+           </Link> 
           <Link
             to={"/postdetail/" + post._id}
             className="no-underline hover:underline"
           >
-            <h3>{post.userId?.userName}</h3>
             <div className="post-image-container">
               <img
                 src={`https://back-end-red-social.onrender.com/${post.imgpost}`}

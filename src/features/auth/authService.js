@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://back-end-red-social.onrender.com";
+const API_URL = "http://localhost:3000";
 
 const register = async (userData) => {
   const res = await axios.post(API_URL + "/users", userData);
@@ -38,12 +38,22 @@ const getLoggedUser = async () => {
   });
   return res.data;
 };
+const getSelectedUser = async (_id) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.get(API_URL + "/users/id/"+_id , {
+    headers: {
+      authorization: token,
+    },
+  });
+  return res.data.user;
+};
 
 const authService = {
   register,
   login,
   logout,
   getLoggedUser,
+  getSelectedUser
 };
 
 export default authService;
