@@ -68,12 +68,13 @@ const Profile = () => {
         <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
       </div>
       <div className="profile-posts">
-        <h2>Posts</h2>
         <div className="post-container">
           {user.posts ? (
             user.posts.map((post, index) => (
-              
               <div key={index} className="post">
+                <div className="post-header">
+                  <p>{user.userName}</p>
+                </div>
                 <div className="post-caption">
                   {editingPostId === post._id ? (
                     <>
