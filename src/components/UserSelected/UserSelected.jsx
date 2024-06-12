@@ -12,34 +12,36 @@ const formatDate = (dateString) => {
 const UserSelected = () => {
   const { _id } = useParams();
   const [user, setUser] = useState("")
-  useEffect( () => {
+  useEffect(() => {
     const fetchUser = async () => {
       const searchedUser = await authService.getSelectedUser(_id);
       console.log("User data received:", searchedUser)
-      setUser(searchedUser );
+      setUser(searchedUser);
     };
 
     fetchUser();
   }, [])
- const follow = (_id)=>{
-  authService.followUser(_id)
- }
+  const follow = (_id) => {
+    authService.followUser(_id)
+  }
   if (!user) {
     return <div className="loading">CARGANDO</div>;
   }
 
   return (
     <div className="profile">
-      {console.log(user)}
+      {console.log(user.user.followers.length)}
       <div className="profile-header">
-        <h1>Profile</h1> 
+        <h1>{user.user.userName}</h1>
       </div>
-        <button onClick={()=> follow(_id)}>Follow</button>
+      <button onClick={() => follow(_id)}>Follow</button>
+    
       <div className="profile-details">
-        <p>Followers: {user.user.followers.length = 0 ?  "0" : user.user.followers.map((follower) => (
-          follower.name
-        ))}</p>
-        <p>Nombre de usuario: {user.user.userName}</p>
+        <p>Followers: </p>
+         {user.user.followers.map((follower) => (
+          <p key={follower._id}>{follower.userName}</p>
+        ))}
+
         <p>Fecha de nacimiento: {formatDate(user.user.dateOfBirth)}</p>
       </div>
       <div className="profile-posts">

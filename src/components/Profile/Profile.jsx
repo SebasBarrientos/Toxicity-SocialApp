@@ -60,9 +60,13 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profile-header">
-        <h1>Profile</h1>
+        <h1>{user.userName}</h1>
       </div>
       <div className="profile-details">
+        <div className="image">
+
+        <img src={"http://localhost:3000/"+user.profilePic} alt="" />
+        </div>
         <p>Followers: {user.followers.length}</p>
         <p>Nombre de usuario: {user.userName}</p>
         <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>

@@ -4,7 +4,8 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: $background-color;
+  background-color: rgba(115, 0, 0, 0.4);
+
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -15,17 +16,27 @@
     h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
-      color: $primary-color;
+      color: white;
     }
   }
-
+.image{
+  display: flex;
+  justify-content: center;
+}
   .profile-details {
     margin-bottom: 2rem;
+
+    img {
+
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
 
     p {
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
-      color: $text-color;
+      color: white;
       margin: 0.5rem 0;
     }
   }
@@ -38,7 +49,7 @@
     h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
-      color: $primary-color;
+      color: white;
       margin-bottom: 1rem;
       width: 100%;
     }
