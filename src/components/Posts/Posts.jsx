@@ -15,7 +15,7 @@ const Posts = () => {
     <div>
       
       <button onClick={() => setPage(page + 1)}>Next</button>
-      <h1>Posts</h1>
+
       <Post />
       <button onClick={() => setPage(page + 1)}>Next</button>
       <button onClick={() => setPage(page - 1)}>back</button>
