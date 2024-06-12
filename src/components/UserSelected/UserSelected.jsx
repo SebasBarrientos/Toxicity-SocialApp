@@ -8,7 +8,7 @@ const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
-
+//VER CON SOFI y actualizar tema de que si sigo a alguien se actualice
 const UserSelected = () => {
   const { _id } = useParams();
   const [user, setUser] = useState("")
@@ -20,7 +20,7 @@ const UserSelected = () => {
     };
 
     fetchUser();
-  }, [user])
+  }, [])
   const follow = (_id) => {
     authService.followUser(_id)
 
