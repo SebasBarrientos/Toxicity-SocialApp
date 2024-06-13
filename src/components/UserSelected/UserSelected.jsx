@@ -24,16 +24,18 @@ const UserSelected = () => {
   }, [])
   const follow = async(_id) => {
    const res= await authService.followUser(_id)
-   const {followers} = user
+   console.log(user);
+   const {followers, posts} = user
    followers.push(myUserId)
-   const newUser = {...res.user,followers}
+   const newUser = {...res.user,followers, posts}
+   console.log(newUser);
    setUser(newUser)
   }
   const unfollow = async(_id) => {
     const res = await authService.unfollowUser(_id)
-    const {followers} = user
+    const {followers, posts} = user
     const actualFollowers = followers.filter(follower => follower._id !==myUserId._id)
-    const newUser = {...res.user,followers:actualFollowers}
+    const newUser = {...res.user,followers:actualFollowers, posts}
     setUser(newUser)
 
   }
