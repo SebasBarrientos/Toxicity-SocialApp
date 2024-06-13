@@ -21,10 +21,15 @@ const Login = () => {
   
   const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login(formData));
-    navigate("/profile");
+    try {
+      await dispatch(login(formData));
+      navigate("/profile");
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+     
+    }
   };
 
   return (
