@@ -58,7 +58,7 @@ const UserSelected = () => {
                 <div className="post-image">
                 <Link to={"/postDetail/" + post._id}>
                   <img
-                    src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+                    src={`http://localhost:3000/${post.imgpost}`}
                     alt=""
                   />
                   </Link>

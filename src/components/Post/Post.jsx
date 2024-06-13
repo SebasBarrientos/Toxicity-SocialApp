@@ -68,7 +68,7 @@ const Post = () => {
           >
             <div className="post-image-container">
               <img
-                src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+                src={`http://localhost:3000/${post.imgpost}`}
                 alt=""
               />
             </div>
