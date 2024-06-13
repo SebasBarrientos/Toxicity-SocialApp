@@ -6,7 +6,7 @@
   padding: 1rem;
 
   .post-card {
-    background-color: rgba(115, 0, 0, 0.4);
+    background-color:rgba(115, 0, 0, 0.4);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
@@ -16,7 +16,7 @@
     h3 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.25rem;
-      color: $primary-color;
+      color: $button-text-color;
       margin-bottom: 0.5rem;
     }
 

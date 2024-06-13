@@ -1,11 +1,10 @@
 @import '../../colors/colors.scss';
 
-.profile {
+.profile-p {
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
   background-color: rgba(115, 0, 0, 0.4);
-
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -19,19 +18,21 @@
       color: white;
     }
   }
-.image{
-  display: flex;
-  justify-content: center;
-}
-  .profile-details {
-    margin-bottom: 2rem;
+
+  .image {
+    display: flex;
+    justify-content: center;
+    
 
     img {
-
       max-height: 350px;
       object-fit: cover;
       border-radius: 8px;
     }
+  }
+
+  .profile-details {
+    margin-bottom: 2rem;
 
     p {
       font-family: 'Roboto', sans-serif;
@@ -90,6 +91,8 @@
             flex: 1;
             margin-right: 0.5rem;
             padding: 0.25rem;
+            border: 1px solid $border-color;
+            border-radius: 4px;
           }
 
           .save-button,
@@ -162,5 +165,13 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
   color: $primary-color;
+  margin-top: 2rem;
+}
+
+.no-posts {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: $text-color;
+  text-align: center;
   margin-top: 2rem;
 }

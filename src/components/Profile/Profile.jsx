@@ -58,7 +58,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="profile">
+    <div className="profile-p">
       <div className="profile-header">
         <h1>{user.userName}</h1>
       </div>
