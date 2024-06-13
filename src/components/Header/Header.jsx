@@ -25,14 +25,15 @@ const Header = () => {
 
   return (
     <nav>
+      <Link to="/" className="hover:text-blue-500">
       <h3>Toxicity</h3>
+        </Link>
+      
 
       <div>
-        <Link to="/" className="hover:text-blue-500">
-          Home
-        </Link>
+      
         <Link to="/posts" className="hover:text-blue-500">
-          Posts
+          Feed
         </Link>
         {user ? (
           <>

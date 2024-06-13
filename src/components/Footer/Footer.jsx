@@ -7,18 +7,13 @@ const Footer = () => {
     <footer>
       <div className="footer-content">
         <div className="footer-links">
-          <Link to="/about" className="footer-link">About</Link>
-          <Link to="/contact" className="footer-link">Contact</Link>
-          <Link to="/privacy" className="footer-link">Privacy Policy</Link>
+          <Link to="https://github.com/SebasBarrientos" className="footer-link">Sebastian Barrientos</Link>
+          <Link to="https://github.com/AgustinErimbaue" className="footer-link">Agustin Erimbaue</Link>
         </div>
-        <div className="footer-social">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">Twitter</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
+        <div >
+          <p>&copy; 2024 Toxicity. All rights reserved.</p>
         </div>
-      </div>
-      <div className="footer-bottom">
-        <p>&copy; 2024 Toxicity. All rights reserved.</p>
+
       </div>
     </footer>
   );
