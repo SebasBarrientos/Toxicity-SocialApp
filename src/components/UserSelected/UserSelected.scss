@@ -1,0 +1,131 @@
+@import "../../colors/colors.scss";
+
+.profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(115, 0, 0, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    h1 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2rem;
+      color: $button-text-color;
+      margin: 0;
+    }
+
+    img {
+      height: 200px; /* Establecer una altura fija */
+      width: 200px;  /* Establecer una anchura fija */
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .profile-details {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    p {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      color: $text-color;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .profile-posts {
+    h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.5rem;
+      color: $button-text-color;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .post-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .post {
+        width: calc(50% - 1rem);
+        margin: 0.5rem;
+        background-color: rgba(255, 182, 193, 0.9);
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+
+        .post-image {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 0.5rem;
+          flex-direction: column;
+
+          img {
+            height: 350px; /* Establecer una altura fija */
+            width: 100%;   /* Establecer una anchura fija */
+            object-fit: cover;
+            border-radius: 8px;
+          }
+        }
+
+        .post-location,
+        .post-likes,
+        .post-comments {
+          font-family: "Roboto", sans-serif;
+          font-size: 0.8rem;
+          color: $text-color;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+
+  .loading {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    color: $primary-color;
+    margin-top: 2rem;
+  }
+
+  button {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    background-color: $primary-color;
+    color: $button-text-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $link-hover-color;
+    }
+  }
+
+  .no-posts {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: $text-color;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}

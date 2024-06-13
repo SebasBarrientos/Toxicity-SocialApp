@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import authService from "../../features/auth/authService";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-
+import "./UserSelected.scss";
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -82,9 +80,7 @@ const UserSelected = () => {
                   </Link>
                   <div className="post-location">{post.location}</div>
                   <div className="post-likes">Likes: {post.likes.length}</div>
-                  <div className="post-comments">
-                    Comments: {post.commentsIds.length}
-                  </div>
+                  <div className="post-comments">Comments: {post.commentsIds.length}</div>
                 </div>
               </div>
             ))
