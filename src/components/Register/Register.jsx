@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Register.scss";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,9 +24,11 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleFileChange = async (e) => {
     setFile(e.target.files[0]);
   };
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -37,12 +40,11 @@ const Register = () => {
     formData.append("dateOfBirth", dateOfBirth);
 
     dispatch(register(formData));
-    navigate("/login")
+    navigate("/login");
   };
 
-
   return (
-    <form onSubmit={onSubmit}>
+    <form className="register-form" onSubmit={onSubmit}>
       <label htmlFor="image">Select your profile picture</label>
       <input type="file" name="image" id="" onChange={handleFileChange} />
 
@@ -86,4 +88,5 @@ const Register = () => {
     </form>
   );
 };
+
 export default Register;
