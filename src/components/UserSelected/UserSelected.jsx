@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import authService from "../../features/auth/authService";
 import { Link, useParams } from "react-router-dom";
 import "./UserSelected.scss";
+import { useSelector } from "react-redux";
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
