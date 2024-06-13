@@ -1,0 +1,30 @@
+@import '../../colors/colors.scss';
+
+
+
+.canvas-height {
+    height: 550px;
+
+    .button-home-div {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 0.5rem;
+
+        button {
+
+            background-color: $button-background;
+            color: $button-text-color;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: darken($button-background, 10%);
+            }
+        }
+    }
+}

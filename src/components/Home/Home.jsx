@@ -4,6 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Image, ScrollControls, useScroll } from '@react-three/drei'
 import { easing } from 'maath'
 import './util'
+import './Home.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getPosts } from '../../features/posts/postsSlice'
@@ -20,27 +21,28 @@ export const Home = () => {
   }, [page]);
 
 
-  const { posts, isLoading } = useSelector((state) => state.posts); 
+  const { posts, isLoading } = useSelector((state) => state.posts);
   const handleCardClick = (postId) => {
-    navigate (`/postdetail/${postId}`);
+    navigate(`/postdetail/${postId}`);
   };
 
-  
+
   if (isLoading) {
     return <Spin />;
   }
 
   return (
-    <div style={{ height: '550px', 
-    
-    }}>
-      <button onClick={() => {setPage((page) => page + 1)}}>Next</button>
-   
-          <button onClick={() => {page==1 ? setPage(1) :setPage((page) => page - 1)}}>back</button>
+    <div className='canvas-height'>
+      <div className='button-home-div'>
+
+        <button onClick={() => { page == 1 ? setPage(1) : setPage((page) => page - 1) }}>back</button>
+        <button onClick={() => { setPage((page) => page + 1) }}>Next</button>
+
+      </div>
       <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
         <fog attach="fog" args={['#a79', 8.5, 12]} />
         <ScrollControls pages={4} infinite style={{ opacity: 0 }}>
-          <Rig rotation={[0, 0,0.02]}>
+          <Rig rotation={[0, 0, 0.02]}>
             <Carousel posts={posts} onCardClick={handleCardClick} />
           </Rig>
         </ScrollControls>
