@@ -1,0 +1,39 @@
+@import "../../colors/colors.scss";
+
+.not-found {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.not-found-content {
+  position: relative;
+  max-width: 600px;
+  padding: 1.5rem;
+  background-color: rgba(115, 0, 0, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem; /* Aumentando el tamaño de la letra */
+    color: white; /* Cambiando el color del texto a blanco */
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem; /* Tamaño del texto */
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  .funny-quote {
+    font-style: italic;
+    color: $link-hover-color; /* Utilizando el color de enlace de la paleta */
+  }
+}
