@@ -46,7 +46,7 @@ const Post = () => {
       await commentsService.deleteComment(_id);
       dispatch(getPosts(1));
     } catch (error) {
-      console.error("Error al eliminar el comentario:", error);
+      console.error("Th:", error);
     }
   };
 
@@ -97,7 +97,7 @@ const Post = () => {
             </div>
           </div>
           <p>
-            Coments ({post.commentsIds.length})
+            Comments ({post.commentsIds.length})
             </p> 
           <div className="comments-list">
           </div>

@@ -4,38 +4,34 @@ import { Link, useParams } from "react-router-dom";
 import "./UserSelected.scss";
 import { useSelector } from "react-redux";
 
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
 
 const UserSelected = () => {
   const { _id } = useParams();
   const [user, setUser] = useState("")
-  const {  user: myUserId } = useSelector((state) => state.auth);
+  const { user: myUserId } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const fetchUser = async () => {
       const searchedUser = await authService.getSelectedUser(_id);
       setUser(searchedUser.user);
-      };
-      fetchUser();
-    
+    };
+    fetchUser();
+
   }, [])
-  const follow = async(_id) => {
-   const res= await authService.followUser(_id)
-   console.log(user);
-   const {followers, posts} = user
-   followers.push(myUserId)
-   const newUser = {...res.user,followers, posts}
-   console.log(newUser);
-   setUser(newUser)
+  const follow = async (_id) => {
+    const res = await authService.followUser(_id)
+    console.log(user);
+    const { followers, posts } = user
+    followers.push(myUserId)
+    const newUser = { ...res.user, followers, posts }
+    console.log(newUser);
+    setUser(newUser)
   }
-  const unfollow = async(_id) => {
+  const unfollow = async (_id) => {
     const res = await authService.unfollowUser(_id)
-    const {followers, posts} = user
-    const actualFollowers = followers.filter(follower => follower._id !==myUserId._id)
-    const newUser = {...res.user,followers:actualFollowers, posts}
+    const { followers, posts } = user
+    const actualFollowers = followers.filter(follower => follower._id !== myUserId._id)
+    const newUser = { ...res.user, followers: actualFollowers, posts }
     setUser(newUser)
 
   }
@@ -48,21 +44,29 @@ const UserSelected = () => {
 
   return (
     <div className="profile">
+      <div className="button-follow">
+
+      <div className="button-follow">
+
+        {user.followers.some((follower) => follower._id == myUserId._id) == false ? <button onClick={() => follow(_id)}>Follow</button> : <button onClick={() => unfollow(_id)}>Unfollow</button>}
+      </div>
+      </div>
       <div className="profile-header">
         <h1>{user.userName}</h1>
         <img src={"http://localhost:3000/" + user.profilePic} alt="" />
 
       </div>
-      {user.followers.some((follower) =>  follower._id == myUserId._id) == false ? <button onClick={() => follow(_id)}>Follow</button> : <button onClick={() => unfollow(_id)}>Unfollow</button>}
 
 
       <div className="profile-details">
+        <div className="followers-div">
         <p>Followers: </p>
-        {user.followers.map((follower) => (
-          <p key={follower._id}>{follower.userName}</p>
+        {user.followers.length==0 ? <p> No followers yet!</p>: user.followers.map((follower) => (
+          <p key={follower._id}className="follower-div"> {follower.userName} </p>
         ))}
+        
+        </div>
 
-        <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
       </div>
       <div className="profile-posts">
         <h2>Posts</h2>

@@ -51,15 +51,15 @@ const PostDetail = () => {
       await commentsService.deleteComment(commentId);
       dispatch(getPostById(_id));
     } catch (error) {
-      console.error("Error al eliminar el comentario:", error);
+      console.error("There's been a problem when deleting the comment comentario:", error);
     }
   };
   return (
     <div>
       <div className="post-card">
-      <Link to={"/userSelected/" + post.userId?._id}>
-        <h3>{post.userId?.userName}</h3>
-                  </Link>
+        <Link to={"/userSelected/" + post.userId?._id}>
+          <h3>{post.userId?.userName}</h3>
+        </Link>
         <div className="post-image-container">
           <img
             src={`http://localhost:3000/${post.imgpost}`}
@@ -67,13 +67,11 @@ const PostDetail = () => {
           />
         </div>
         <div className="post-caption">
-          <p className="text-gray-700 text-base">{post.caption}</p>
+          <h3 className="">{post.caption}</h3>
         </div>
-
-
         <div className="interaction-buttons">
           <div className="like-post">
-            {post.likes.length} likes
+            {post.likes.length}
             <HeartTwoTone
               twoToneColor="#eb2f96"
               onClick={() => {
@@ -90,24 +88,28 @@ const PostDetail = () => {
             />
           </div>
         </div>
-
-        <div className="comment-section">
-          <input
-            type="text"
-            className="border"
-            name="bodyText"
-            value={bodyText}
-            onChange={onChange}
-          />
-          <button onClick={() => handleSubmitComment(post._id)}>
-            Submit comment
-          </button>
+        <div className="bg-like-comment">
+          <div className="comment-section">
+            <input
+              type="text"
+              className="border"
+              name="bodyText"
+              value={bodyText}
+              onChange={onChange}
+              placeholder="Add comment"
+            />
+            <button onClick={() => handleSubmitComment(post._id)}>
+              Submit comment
+            </button>
+          </div>
         </div>
 
         <div className="comments-list">
           {post.commentsIds.map((comment) => (
             <div key={comment._id} className="comment">
-              <p>{comment.userId?.name}</p>
+              <div className="comment-user-div">
+                <p>{comment.userId?.name}</p>
+              </div>
               {comment._id === editingCommentId ? (
                 <>
                   <input
@@ -132,7 +134,7 @@ const PostDetail = () => {
                 </>
               ) : (
                 <>
-                  <p>{comment.bodyText}</p>
+                  <p>Commented: {comment.bodyText}</p>
                   <button
                     onClick={() => startEdit(comment._id, comment.bodyText)}
                     className="edit-button"

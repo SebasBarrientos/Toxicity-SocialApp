@@ -33,16 +33,16 @@ const CreatePost = () => {
                         className="border-4 border-black mt-4 p-2 rounded-md focus:outline-none"
                         type="text"
                         name="caption"
-                        placeholder="Enter the products caption"
+                        placeholder="Add a caption"
                     />
                     <input
                         className="border-4 border-black mt-4 p-2 rounded-md focus:outline-none"
                         type="text"
                         name="location"
-                        placeholder="Enter the location"
+                        placeholder="Add location"
                     />
                     <button className="button mt-4 bg-black text-white p-2 rounded-md hover:bg-blue-800">
-                        Enviar
+                        Post
                     </button>
                 </form>
             </div>

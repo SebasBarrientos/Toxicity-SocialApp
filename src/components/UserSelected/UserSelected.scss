@@ -8,6 +8,11 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
+  .button-follow {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .profile-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -22,8 +27,8 @@
     }
 
     img {
-      height: 200px; /* Establecer una altura fija */
-      width: 200px;  /* Establecer una anchura fija */
+      height: 200px;
+      width: 200px;
       object-fit: cover;
       border-radius: 50%;
       margin-top: 1rem;
@@ -34,13 +39,29 @@
   }
 
   .profile-details {
-    text-align: center;
-    margin-bottom: 2rem;
+    background-color: rgba(255, 182, 193, 0.5);
+    border-radius: 8px;
+
+    .followers-div {
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+
+      .follower-div {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        padding: 3px;
+        border-radius: 8px;
+
+      }
+
+    }
 
     p {
       font-family: "Roboto", sans-serif;
       font-size: 1rem;
-      color: $text-color;
+      color: white;
       margin: 0.5rem 0;
     }
   }
@@ -62,8 +83,8 @@
       .post {
         width: calc(50% - 1rem);
         margin: 0.5rem;
-        background-color: rgba(255, 182, 193, 0.9);
-        border: 1px solid $border-color;
+        background-color: rgba(255, 182, 193, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         padding: 1rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -76,8 +97,10 @@
           flex-direction: column;
 
           img {
-            height: 350px; /* Establecer una altura fija */
-            width: 100%;   /* Establecer una anchura fija */
+            height: 350px;
+            /* Establecer una altura fija */
+            width: 100%;
+            /* Establecer una anchura fija */
             object-fit: cover;
             border-radius: 8px;
           }

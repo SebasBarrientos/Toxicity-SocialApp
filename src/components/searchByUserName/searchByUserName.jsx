@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import { Spin } from "antd";
 
 
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
 
 const SearchedUsers = () => {
   const { searchByUserName, searchIsLoading } = useSelector((state) => state.auth);

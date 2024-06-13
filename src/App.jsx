@@ -23,22 +23,25 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/userSelected/:_id" element={<UserSelected />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/createPost" element={<CreatePost />} />
-          <Route path="/postdetail/:_id" element={<PostDetail />} />
+          <Route path="/postdetail/:_id" element={<PrivateZone>
+            <PostDetail />
+          </PrivateZone>} />
           <Route path="/login" element={<Login />} />
+          <Route path="/userSelected/:_id" element={
+            <PrivateZone>
+              <UserSelected />
+            </PrivateZone>} />
           <Route
             path="/profile"
             element={
               <PrivateZone>
                 <Profile />
-              </PrivateZone>
-            }
-          />
+              </PrivateZone>} />
           <Route path="/register" element={<Register />} />
           <Route path="/search/:caption" element={<Search />} />
-          <Route path ="*" element={<NotFound/>}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -4,11 +4,7 @@ import { getLoggedUser } from "../../features/auth/authSlice";
 import "./Profile.scss";
 import { getPosts } from "../../features/posts/postsSlice";
 import postsService from "../../features/posts/postsService";
-
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { user, isLoading, token } = useSelector((state) => state.auth);
@@ -62,23 +58,24 @@ const Profile = () => {
       <div className="profile-header">
         <h1>{user.userName}</h1>
       </div>
-      <div className="profile-details">
         <div className="image">
 
-        <img src={"http://localhost:3000/"+user.profilePic} alt="" />
+          <img src={"http://localhost:3000/" + user.profilePic} alt="" />
         </div>
-        <p>Followers: {user.followers.length}</p>
-        <p>Nombre de usuario: {user.userName}</p>
-        <p>Fecha de nacimiento: {formatDate(user.dateOfBirth)}</p>
+      <div className="profile-details">
+        <div className="followers-div">
+          <p>Followers: </p>
+          {user.followers.length == 0 ? <p>0</p> : user.followers.map((follower) => (
+            <p key={follower._id}className="follower-div">{follower.userName}</p>
+          ))}
+
+        </div>
       </div>
       <div className="profile-posts">
         <div className="post-container">
           {user.posts ? (
             user.posts.map((post, index) => (
               <div key={index} className="post">
-                <div className="post-header">
-                  <p>{user.userName}</p>
-                </div>
                 <div className="post-caption">
                   {editingPostId === post._id ? (
                     <>
@@ -111,12 +108,14 @@ const Profile = () => {
                 </div>
                 <div className="post-image">
                   <div className="image">
+                    <Link to={"/postDetail/" + post._id}>
+                      <img
+                        src={`http://localhost:3000/${post.imgpost}`}
+                        alt=""
+                      />
+                    </Link>
 
-                  <img
-                    src={`http://localhost:3000/${post.imgpost}`}
-                    alt=""
-                    />
-                    </div>
+                  </div>
                   <div className="post-location">{post.location}</div>
                   <div className="post-likes">Likes: {post.likes.length}</div>
                   <div className="post-comments">
