@@ -64,7 +64,16 @@ const followUser = async (_id) => {
       authorization: token,
     },
   });
-  return res.data.user;
+  return res.data;
+};
+const unfollowUser = async (_id) => {
+  const token = localStorage.getItem("token");
+  const res = await axios.put(API_URL + "/users/unfollow/"+_id ,"", {
+    headers: {
+      authorization: token,
+    },
+  });
+  return res.data;
 };
 
 const authService = {
@@ -74,6 +83,7 @@ const authService = {
   getLoggedUser,
   getSelectedUser,
   followUser,
+  unfollowUser,
   searchByUserName
 };
 
