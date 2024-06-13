@@ -96,66 +96,14 @@ const Post = () => {
               />
             </div>
           </div>
-
-          <div className="comment-section">
-            <input
-              type="text"
-              className="border"
-              name="bodyText"
-              value={bodyText}
-              onChange={onChange}
-            />
-            <button onClick={() => handleSubmitComment(post._id)}>
-              Submit comment
-            </button>
-          </div>
-
+          <p>
+            Coments ({post.commentsIds.length})
+            </p> 
           <div className="comments-list">
-            {post.commentsIds.map((comment) => (
-              <div key={comment._id} className="comment">
-                <p>{comment.userId?.name}</p>
-                {comment._id === editingCommentId ? (
-                  <>
-                    <input
-                      type="text"
-                      value={editedComment}
-                      onChange={(e) => setEditedComment(e.target.value)}
-                    />
-                    <div className="edit-buttons">
-                      <button
-                        onClick={() => handleSaveEditedComment(comment._id)}
-                        className="save-button"
-                      >
-                        Save
-                      </button>
-                      <button
-                        onClick={cancelEdit}
-                        className="cancel-button"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <p>{comment.bodyText}</p>
-                    <button
-                      onClick={() => startEdit(comment._id, comment.bodyText)}
-                      className="edit-button"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-button-comment"
-                      onClick={() => handleDeleteComment(comment._id)}
-                    >
-                      Delete
-                    </button>
-                  </>
-                )}
-              </div>
-            ))}
           </div>
+
+          
+
         </div>
       ))}
     </div>
