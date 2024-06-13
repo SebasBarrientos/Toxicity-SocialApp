@@ -16,12 +16,12 @@ const CreatePost = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        console.log(e.target);
         formData.append("image", file);
         formData.append("caption", e.target.caption.value);
         formData.append("location", e.target.location.value);
         dispatch(addPost(formData))
-        navigate("/")
+        console.log(formData);
+        // navigate("/")
         notification.success({
             message: 'Registered succesfully'})
     }

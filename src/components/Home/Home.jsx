@@ -67,7 +67,7 @@ function Carousel({ posts, onCardClick, radius = 2.3 }) {
   return posts.map((post, i) => (
     <Card
       key={post._id}
-      url={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+      url={`http://localhost:3000/${post.imgpost}`}
       position={[Math.sin((i / posts.length) * Math.PI * 2) * radius, 0, Math.cos((i / posts.length) * Math.PI * 2) * radius]}
       rotation={[0, Math.PI + (i / posts.length) * Math.PI * 2, 0]}
       onClick={() => onCardClick(post._id)}

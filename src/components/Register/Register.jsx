@@ -4,50 +4,48 @@ import { register } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const navigate = useNavigate;
-  const [formData, setFormData] = useState({
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
     name: "",
     userName: "",
     email: "",
     password: "",
     dateOfBirth: "",
-    image: "",
   });
-  const { name, userName, email, password, dateOfBirth } = formData;
-  //   const { isSuccess, message, isError } = useSelector((state) => state.auth);
-
-  //   useEffect(() => {
-  //     if (isSuccess) {
-  //       notification.success({
-  //         message: "Success",
-  //         description: message,
-  //       });
-  //     }
-  //     if (isError) {
-  //       notification.error({
-  //         message: "Error!!!",
-  //         description: message,
-  //       });
-  //     }
-  //     dispatch(reset())
-  //   }, [isSuccess, message, isError]);
+  const { name, userName, email, password, dateOfBirth } = form;
+  const [file, setFile] = useState(null);
 
   const dispatch = useDispatch();
 
   const onChange = (e) => {
-    setFormData({
-      ...formData,
+    setForm({
+      ...form,
       [e.target.name]: e.target.value,
     });
   };
+  const handleFileChange = async (e) => {
+    setFile(e.target.files[0]);
+  };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("name", name);
+    formData.append("userName", userName);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("dateOfBirth", dateOfBirth);
+
     dispatch(register(formData));
     navigate("/login")
   };
+
+
   return (
     <form onSubmit={onSubmit}>
+      <label htmlFor="image">Select your profile picture</label>
+      <input type="file" name="image" id="" onChange={handleFileChange} />
+
       <input
         type="text"
         name="name"

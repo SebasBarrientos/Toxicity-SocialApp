@@ -6,8 +6,10 @@ const token = localStorage.getItem("token") || "";
 
 const initialState = {
   user: user,
+  searchByUserName: "",
   token: token,
   isLoading: true,
+  searchIsLoading:true
 };
 
 export const authSlice = createSlice({
@@ -23,13 +25,11 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        
-        })
-        
-        .addCase(logout.fulfilled, (state) => {
-          state.user = null;
-          state.token = "";
-          state.isLoading = true
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.token = "";
+        state.isLoading = true
       })
       .addCase(getLoggedUser.fulfilled, (state, action) => {
         state.user = action.payload.userData;
@@ -38,25 +38,41 @@ export const authSlice = createSlice({
       .addCase(getLoggedUser.pending, (state) => {
         state.isLoading = true
       })
+      .addCase(searchByUserName.fulfilled, (state, action) => {
+        state.searchByUserName = action.payload;
+        state.searchIsLoading = false;
+      })
+      .addCase(searchByUserName.pending, (state) => {
+        state.searchIsLoading = true
+      })
+
   },
 });
 
 export const getLoggedUser = createAsyncThunk("auth/getLoggedUser", async () => {
-    try {
-      return await authService.getLoggedUser();
-    } catch (error) {
-      console.error(error);
-    }
+  try {
+    return await authService.getLoggedUser();
+  } catch (error) {
+    console.error(error);
   }
+}
 );
 
 export const register = createAsyncThunk("auth/register", async (userData) => {
   return await authService.register(userData);
 });
 
+
 export const login = createAsyncThunk("auth/login", async (user) => {
   try {
     return await authService.login(user);
+  } catch (error) {
+    console.error(error);
+  }
+});
+export const searchByUserName = createAsyncThunk("auth/searchByUserName", async (searchedName) => {
+  try {
+    return await authService.searchByUserName(searchedName);
   } catch (error) {
     console.error(error);
   }

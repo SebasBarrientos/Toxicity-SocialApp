@@ -1,7 +1,7 @@
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import axios from "axios";
 
-const API_URL = "https://back-end-red-social.onrender.com/posts";
+const API_URL = "http://localhost:3000/posts";
 
 const getPosts = async (page) => {
   const res = await axios.get(API_URL + "?page=" + page);
@@ -19,7 +19,6 @@ const getPostById = async (_id) => {
 };
 const getPostByName = async (caption) => {
   const token = localStorage.getItem("token");
-  console.log(caption);
   const res = await axios.get(API_URL + "/caption/?caption=" + caption, {
     headers: {
       Authorization: token,
@@ -29,7 +28,6 @@ const getPostByName = async (caption) => {
 };
 const addPost = async (formData) => {
   const token = localStorage.getItem("token");
-  console.log(token);
   await axios.post(API_URL, formData, {
     headers: {
       "Content-Type": "multipart/form-data",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Spin } from "antd";
@@ -68,7 +68,7 @@ const Post = () => {
           >
             <div className="post-image-container">
               <img
-                src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+                src={`http://localhost:3000/${post.imgpost}`}
                 alt=""
               />
             </div>

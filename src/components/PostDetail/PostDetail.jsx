@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { dislike, getPostById, getPosts, like } from "../../features/posts/postsSlice";
 import { Spin } from "antd";
 import { HeartTwoTone, FrownOutlined } from "@ant-design/icons";
@@ -60,11 +60,12 @@ const PostDetail = () => {
     <div>
       {console.log(post)}
       <div className="post-card">
-
+      <Link to={"/userSelected/" + post.userId?._id}>
         <h3>{post.userId?.userName}</h3>
+                  </Link>
         <div className="post-image-container">
           <img
-            src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
+            src={`http://localhost:3000/${post.imgpost}`}
             alt=""
           />
         </div>
