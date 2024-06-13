@@ -110,10 +110,13 @@ const Profile = () => {
                   )}
                 </div>
                 <div className="post-image">
+                  <div className="image">
+
                   <img
                     src={`http://localhost:3000/${post.imgpost}`}
                     alt=""
-                  />
+                    />
+                    </div>
                   <div className="post-location">{post.location}</div>
                   <div className="post-likes">Likes: {post.likes.length}</div>
                   <div className="post-comments">
