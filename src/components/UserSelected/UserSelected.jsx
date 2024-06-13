@@ -9,7 +9,6 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-//VER CON SOFI y actualizar tema de que si sigo a alguien se actualice
 const UserSelected = () => {
   const { _id } = useParams();
   const [user, setUser] = useState("")
@@ -47,13 +46,11 @@ const UserSelected = () => {
 
   return (
     <div className="profile">
-      {console.log(user.followers.length)}
       <div className="profile-header">
         <h1>{user.userName}</h1>
         <img src={"http://localhost:3000/" + user.profilePic} alt="" />
 
       </div>
-      {console.log(user.followers)   }
       {user.followers.some((follower) =>  follower._id == myUserId._id) == false ? <button onClick={() => follow(_id)}>Follow</button> : <button onClick={() => unfollow(_id)}>Unfollow</button>}
 
 

@@ -15,10 +15,8 @@ const PostDetail = () => {
   const [editedComment, setEditedComment] = useState("");
 
   useEffect(() => {
-    console.log(_id);
     dispatch(getPostById(_id));
   }, []);
-  console.log(isLoadingPost);
   if (isLoadingPost) {
     return <Spin />
   }
@@ -58,7 +56,6 @@ const PostDetail = () => {
   };
   return (
     <div>
-      {console.log(post)}
       <div className="post-card">
       <Link to={"/userSelected/" + post.userId?._id}>
         <h3>{post.userId?.userName}</h3>

@@ -19,7 +19,6 @@ const modifyComment = async (_id, body) => {
 };
 
 const deleteComment = async (_id) => {
-  console.log(_id);
   const token = localStorage.getItem("token");
   const res = await axios.delete(`${API_URL}/id/${_id}`, {
     headers: { Authorization: token },

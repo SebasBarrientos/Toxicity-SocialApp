@@ -45,7 +45,6 @@ const getSelectedUser = async (_id) => {
       authorization: token,
     },
   });
-  console.log(res.data);
   return res.data;
 };
 const searchByUserName = async (searchedName) => {

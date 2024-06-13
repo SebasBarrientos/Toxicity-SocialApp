@@ -1,7 +1,7 @@
-// NotFound.js
+
 
 import React from 'react';
-import './NotFound.scss'; // Importa el archivo SCSS
+import './NotFound.scss'; 
 
 const NotFound = () => {
   return (

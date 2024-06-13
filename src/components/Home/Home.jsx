@@ -36,7 +36,7 @@ export const Home = () => {
     }}>
       <button onClick={() => {setPage((page) => page + 1)}}>Next</button>
    
-          <button onClick={() => {page==1 ? setPage(1) :setPage((page) => page - 1), console.log(page)}}>back</button>
+          <button onClick={() => {page==1 ? setPage(1) :setPage((page) => page - 1)}}>back</button>
       <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
         <fog attach="fog" args={['#a79', 8.5, 12]} />
         <ScrollControls pages={4} infinite style={{ opacity: 0 }}>

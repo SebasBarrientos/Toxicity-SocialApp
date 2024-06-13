@@ -20,8 +20,7 @@ const CreatePost = () => {
         formData.append("caption", e.target.caption.value);
         formData.append("location", e.target.location.value);
         dispatch(addPost(formData))
-        console.log(formData);
-        // navigate("/")
+         navigate("/")
         notification.success({
             message: 'Registered succesfully'})
     }
