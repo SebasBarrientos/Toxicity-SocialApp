@@ -21,13 +21,16 @@
     }
 
     .post-image-container {
-      height: 350px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      height: 380px;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $gray-light;
+      background-color: rgba(255, 182, 193, 0.3);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       margin-bottom: 1rem;
+  
 
       img {
         max-height: 350px;
