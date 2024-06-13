@@ -60,15 +60,16 @@ const PostDetail = () => {
         <Link to={"/userSelected/" + post.userId?._id}>
           <h3>{post.userId?.userName}</h3>
         </Link>
+        <div className="post-caption">
+          <h4 className="">{post.caption}</h4>
+        </div>
         <div className="post-image-container">
           <img
             src={`http://localhost:3000/${post.imgpost}`}
             alt=""
           />
         </div>
-        <div className="post-caption">
-          <h3 className="">{post.caption}</h3>
-        </div>
+        
         <div className="interaction-buttons">
           <div className="like-post">
             {post.likes.length}
@@ -89,6 +90,11 @@ const PostDetail = () => {
           </div>
         </div>
         <div className="bg-like-comment">
+          <div className="flex-location">
+
+        <h4 className="">Location: {post.location}</h4>
+          </div>
+
           <div className="comment-section">
             <input
               type="text"

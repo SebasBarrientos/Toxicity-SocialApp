@@ -14,7 +14,6 @@ const Posts = () => {
 
   return (
     <div className="posts-container">
-      <h1 className="posts-title">Posts</h1>
       <div className="post-list">
         <Post />
       </div>

@@ -6,23 +6,20 @@
   padding: 1rem;
 
   .post-card {
-    background-color:rgba(115, 0, 0, 0.4);
+    background-color: rgba(115, 0, 0, 0.4);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 1.5rem;
     padding: 1rem;
 
     h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.5rem;
       color: $button-text-color;
-      margin-bottom: 0.5rem;
+      text-align: left;
     }
 
     .post-image-container {
-      margin-top: 30px;
-      margin-bottom: 30px;
       height: 380px;
       display: flex;
       justify-content: center;
@@ -31,7 +28,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       margin-bottom: 1rem;
       border-radius: 8px;
-  
+
 
       img {
         max-height: 350px;
@@ -41,10 +38,28 @@
     }
 
     .post-caption {
-      padding: 1rem;
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
       color: $text-color;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      h4 {
+        border: 4px solid rgba(255, 182, 193, 0.5);
+        padding: 3px;
+        border-radius: 8px;
+        color: white;
+      }
+    }
+
+    .bg-like-comments {
+      border-radius: 4px;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .interaction-buttons {
@@ -53,9 +68,10 @@
       gap: 1rem;
       margin: 0.5rem 0;
 
-      .like-post, .dislike-post {
+      .like-post,
+      .dislike-post {
         font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
+        font-size: 1.1rem;
         color: $text-color;
         display: flex;
         align-items: center;
@@ -71,109 +87,10 @@
         }
       }
     }
+    .flex-comments {
+      
+      color: grey;
 
-    .comment-section {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 1rem;
-
-      input[type='text'] {
-        padding: 0.5rem;
-        font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
-        border: 1px solid $border-color;
-        border-radius: 4px;
-        margin-bottom: 0.5rem;
-      }
-
-      button {
-        padding: 0.5rem 1rem;
-        font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
-        color: #fff;
-        background-color: $button-background;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-          background-color: darken($button-background, 10%);
-        }
-      }
-    }
-
-    .comments-list {
-      margin-top: 1rem;
-
-      .comment {
-        padding: 0.5rem;
-        font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
-        color: $text-color;
-        border-bottom: 1px solid $border-color;
-
-        p {
-          margin: 0.25rem 0;
-        }
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        .edit-buttons {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-top: 0.5rem;
-
-          button {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
-            color: $button-text-color;
-            background-color: $button-background;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-
-            &:hover {
-              background-color: darken($button-background, 10%);
-            }
-          }
-        }
-
-        .edit-button {
-          padding: 0.25rem 0.5rem;
-          font-size: 0.875rem;
-          color: $button-text-color;
-          background-color: $button-background;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-
-          &:hover {
-            background-color: darken($button-background, 10%);
-          }
-        }
-
-        .delete-button-comment {
-          padding: 0.25rem 0.5rem;
-          font-size: 0.875rem;
-          color: #ffffff;
-          background-color: #ff4d4f;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-
-          &:hover {
-            background-color: darken(#ff4d4f, 10%);
-          }
-        }
-      }
     }
   }
 }
