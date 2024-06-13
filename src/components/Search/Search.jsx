@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Post from "../Post/Post";
 import { getPostByName } from "../../features/posts/postsSlice";
-import SearchedUsers from "../searchByUserName/searchByUserName";
 import { searchByUserName } from "../../features/auth/authSlice";
-
+import "./Search.scss"
+import SearchByUserName from "../searchByUserName/SearchByUserName";
 const Search = () => {
 
   const { caption } = useParams();
@@ -20,7 +20,7 @@ const Search = () => {
     <h2>Posts</h2>
     <Post/>
     <h2>Users</h2>
-    <SearchedUsers/>
+    <SearchByUserName/>
   </div>;
 };
 

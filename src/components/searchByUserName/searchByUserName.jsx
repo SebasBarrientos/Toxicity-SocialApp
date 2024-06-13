@@ -2,10 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Spin } from "antd";
+import "./SearchByUserName.scss"
 
 
-
-const SearchedUsers = () => {
+const SearchByUserName = () => {
   const { searchByUserName, searchIsLoading } = useSelector((state) => state.auth);
 
   if (searchIsLoading) {
@@ -24,7 +24,10 @@ const SearchedUsers = () => {
                 </Link>
               </h1>
             </div>
+            <div className="post-userSearched-image-container">
+
             <img src={"http://localhost:3000/" + user.profilePic} alt={user.userName} />
+            </div>
           </div>
         )
       })}
@@ -32,4 +35,4 @@ const SearchedUsers = () => {
   )
 }
 
-export default SearchedUsers;
+export default SearchByUserName;
