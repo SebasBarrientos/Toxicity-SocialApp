@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import Post from "../Post/Post";
-import { getPostByName } from "../../features/posts/postsSlice";
-import { searchByUserName } from "../../features/auth/authSlice";
+import Post from "../../components/Post/Post";
+import { getPostByName } from "../posts/postsSlice";
+import { searchByUserName } from "../auth/authSlice";
 import "./Search.scss"
-import SearchedUsers from "../SearchedUsers/SearchedUsers";
-
+import SearchByUserName from "../../components/searchByUserName/SearchByUserName";
 const Search = () => {
 
   const { caption } = useParams();
@@ -25,7 +24,7 @@ const Search = () => {
     <div className="title-search">
       <h2>Users found</h2>
     </div>
-    <SearchedUsers/>
+    <SearchByUserName/>
   </div>;
 };
 

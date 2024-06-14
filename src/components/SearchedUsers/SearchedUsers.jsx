@@ -2,16 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Spin } from "antd";
-import "./SearchByUserName.scss"
+import "./SearchedUsers.scss"
 
 
-const SearchByUserName = () => {
+const SearchedUsers = () => {
   const { searchByUserName, searchIsLoading } = useSelector((state) => state.auth);
 
   if (searchIsLoading) {
     return <Spin className="loading" />;
   }
-
+  
   return (
     <div className="searched-users-container">
       {searchByUserName.map((user) => {
@@ -35,4 +35,4 @@ const SearchByUserName = () => {
   )
 }
 
-export default SearchByUserName;
+export default SearchedUsers;
