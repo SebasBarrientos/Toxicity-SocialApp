@@ -5,7 +5,7 @@ import Post from "../Post/Post";
 import { getPostByName } from "../../features/posts/postsSlice";
 import { searchByUserName } from "../../features/auth/authSlice";
 import "./Search.scss"
-import SearchByUserName from "../searchByUserName/SearchByUserName";
+import SearchByUserName from "../searchByUserName/SearchByUserName.jsx";
 const Search = () => {
 
   const { caption } = useParams();
