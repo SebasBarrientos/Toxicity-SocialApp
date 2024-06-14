@@ -5,7 +5,7 @@ import Post from "../Post/Post";
 import { getPostByName } from "../../features/posts/postsSlice";
 import { searchByUserName } from "../../features/auth/authSlice";
 import "./Search.scss"
-import SearchByUserName from "../searchByUserName/SearchByUserName.jsx";
+import SearchByUserName from "../searchByUserName/SearchByUserName";
 const Search = () => {
 
   const { caption } = useParams();
@@ -24,7 +24,7 @@ const Search = () => {
     <div className="title-search">
       <h2>Users found</h2>
     </div>
-    <SearchByUserName />
+    <SearchByUserName/>
   </div>;
 };
 
