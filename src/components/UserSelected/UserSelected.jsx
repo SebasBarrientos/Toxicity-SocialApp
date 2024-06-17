@@ -53,7 +53,7 @@ const UserSelected = () => {
       </div>
       <div className="profile-header">
         <h1>{user.userName}</h1>
-        <img src={"http://localhost:3000/" + user.profilePic} alt="" />
+        <img src={"https://back-end-red-social.onrender.com/" + user.profilePic} alt="" />
 
       </div>
 
@@ -78,7 +78,7 @@ const UserSelected = () => {
                 <div className="post-image">
                   <Link to={"/postDetail/" + post._id}>
                     <img
-                      src={`http://localhost:3000/${post.imgpost}`}
+                      src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
                       alt=""
                     />
                   </Link>

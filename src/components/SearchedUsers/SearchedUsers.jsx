@@ -26,7 +26,7 @@ const SearchedUsers = () => {
             </div>
             <div className="post-userSearched-image-container">
 
-            <img src={"http://localhost:3000/" + user.profilePic} alt={user.userName} />
+            <img src={"https://back-end-red-social.onrender.com/" + user.profilePic} alt={user.userName} />
             </div>
           </div>
         )

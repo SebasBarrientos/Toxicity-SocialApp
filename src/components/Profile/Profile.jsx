@@ -60,7 +60,7 @@ const Profile = () => {
       </div>
         <div className="image">
 
-          <img src={"http://localhost:3000/" + user.profilePic} alt="" />
+          <img src={"https://back-end-red-social.onrender.com/" + user.profilePic} alt="" />
         </div>
       <div className="profile-details">
         <div className="followers-div">
@@ -110,7 +110,7 @@ const Profile = () => {
                   <div className="image">
                     <Link to={"/postDetail/" + post._id}>
                       <img
-                        src={`http://localhost:3000/${post.imgpost}`}
+                        src={`https://back-end-red-social.onrender.com/${post.imgpost}`}
                         alt=""
                       />
                     </Link>
