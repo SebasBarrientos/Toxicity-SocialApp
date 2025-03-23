@@ -114,3 +114,8 @@ Configuración central del almacenamiento Redux que combina todos los reducers y
   
 ### Explicaciones de librerias extra:
 - La idea al comienzo del proyecto era utilizar tailwind pero para demostrar el manejo de scss se decidió continuar con el proyecto utilizando este último!
+
+## 👥 Autores
+Agustín Erimbaue
+
+Sebastián Barrientos
